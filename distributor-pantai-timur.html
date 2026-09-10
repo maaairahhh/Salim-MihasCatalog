@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantai Timur Distributors | Salim Melawati Kebab</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --salim-red: #ba0c18;
+            --salim-red-hover: #960812;
+            --salim-green: #008d4c;
+            --salim-green-hover: #006e3b;
+            --btn-dark: #1e293b;
+            --btn-dark-hover: #0f172a;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* Header Navigation */
+        header {
+            background: var(--salim-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-group img {
+            height: 45px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--salim-green);
+            border-radius: 2px;
+        }
+
+        /* Page Layout & Controls */
+        .page-header {
+            padding: 2.5rem 0 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.6rem 1.2rem;
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            width: fit-content;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background: var(--salim-red);
+            color: #ffffff;
+            border-color: var(--salim-red);
+        }
+
+        .page-title h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .page-title p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Filter Controls Container */
+        .controls-wrapper {
+            margin: 1.5rem 0 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* State Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            color: var(--text-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--salim-red);
+            color: #ffffff;
+            border-color: var(--salim-red);
+            box-shadow: 0 4px 12px rgba(186, 12, 24, 0.2);
+        }
+
+        /* Search Input */
+        .search-input-container {
+            position: relative;
+            max-width: 600px;
+        }
+
+        .search-input-container i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            outline: none;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--salim-red);
+            box-shadow: 0 0 0 4px rgba(186, 12, 24, 0.1);
+        }
+
+        /* Section Title Header */
+        .section-header-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--salim-red);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Card Grid Layout */
+        .distributor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        /* Unified Card Structure & Uniform Heights */
+        .distributor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .distributor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--salim-red);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            min-height: 48px;
+        }
+
+        .card-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-gray);
+        }
+
+        .info-row i {
+            color: var(--salim-red);
+            width: 16px;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .info-row strong {
+            color: var(--text-dark);
+        }
+
+        /* Standardized Action Buttons */
+        .card-actions {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--salim-green);
+            color: #ffffff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--salim-green-hover);
+            color: #ffffff;
+        }
+
+        .btn-call {
+            background-color: var(--btn-dark);
+            color: #ffffff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background-color: var(--btn-dark-hover);
+            color: #ffffff;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: #ffffff;
+            border-radius: 12px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.8rem 0;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            .distributor-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-tabs {
+                width: 100%;
+            }
+            .tab-btn {
+                flex: 1 1 calc(50% - 10px);
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-group">
+                    <img src="productpic/SALIM.png" alt="Salim Logo">
+                    <img src="productpic/mksb.png" alt="MKSB Logo">
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produk.html">Products</a></li>
+                    <li><a href="distributor.html" class="active">Distributor</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Page Header & Back Button -->
+        <div class="page-header">
+            <a href="javascript:history.back()" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+            <div class="page-title">
+                <h1>Pantai Timur Distributors</h1>
+                <p>Find authorized distributors across Kelantan, Terengganu, and Pahang.</p>
+            </div>
+        </div>
+
+        <!-- Controls: State Filter Tabs & Search Bar -->
+        <div class="controls-wrapper">
+            <div class="filter-tabs">
+                <button class="tab-btn active" onclick="setFilterState('all', this)">
+                    <i class="fa-solid fa-layer-group"></i> All States
+                </button>
+                <button class="tab-btn" onclick="setFilterState('kelantan', this)">
+                    <i class="fa-solid fa-map-pin"></i> Kelantan
+                </button>
+                <button class="tab-btn" onclick="setFilterState('terengganu', this)">
+                    <i class="fa-solid fa-map-pin"></i> Terengganu
+                </button>
+                <button class="tab-btn" onclick="setFilterState('pahang', this)">
+                    <i class="fa-solid fa-map-pin"></i> Pahang
+                </button>
+            </div>
+
+            <div class="search-input-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search distributor by name, city, or state..." onkeyup="renderDistributors()" oninput="renderDistributors()">
+            </div>
+        </div>
+
+        <div id="noResults" class="no-results">
+            No distributors found matching your search.
+        </div>
+
+        <!-- Dynamic Container For Distributors -->
+        <div id="distributorsDisplay"></div>
+
+    </main>
+
+    <!-- Master Data & Dynamic Filtering Script -->
+    <script>
+        // Master Dataset containing all distributors across Kelantan, Terengganu, and Pahang
+        const distributorsData = [
+            // KELANTAN
+            { name: "AL HAJJ FROZEN", phone: "601295102526", city: "KOTA BHARU", attention: "", state: "Kelantan", type: "call", link: "tel:601295102526" },
+            { name: "AL MADINA FOOD SUPPLY", phone: "60129510526", city: "KOTA BHARU", attention: "", state: "Kelantan", type: "wa", link: "https://wa.me/60129510526" },
+            { name: "CHERANG JAYA TRADING", phone: "6097422972", city: "KOTA BHARU", attention: "NURUL", state: "Kelantan", type: "call", link: "tel:6097422972" },
+            { name: "IJ WALK IN SDN. BHD.", phone: "6097446594", city: "KOTA BHARU", attention: "MR ADEN CHEW", state: "Kelantan", type: "call", link: "tel:6097446594" },
+            { name: "KB FROZEN & TRADING SDN. BHD.", phone: "60176055733", city: "KOTA BHARU", attention: "MISS ENG", state: "Kelantan", type: "wa", link: "https://wa.me/60176055733" },
+            { name: "MOHAMAD HAD TRADING", phone: "601161119191", city: "KOTA BHARU", attention: "ENCIK HAD", state: "Kelantan", type: "wa", link: "https://wa.me/601161119191" },
+            { name: "NADI AYAM & DISTRIBUTION SDN. BHD.", phone: "60139823100 / 6097836806", city: "KOTA BHARU", attention: "", state: "Kelantan", type: "wa", link: "https://wa.me/60139823100" },
+            { name: "SL FRESH & FROZEN FOOD SDN BHD", phone: "6097718229", city: "KOTA BHARU", attention: "", state: "Kelantan", type: "call", link: "tel:6097718229" },
+            { name: "SL FRESH & FROZEN MART SDN BHD (WCY)", phone: "60166149468", city: "KOTA BHARU", attention: "LENA FOO", state: "Kelantan", type: "wa", link: "https://wa.me/60166149468" },
+            { name: "TAN TAI TRADING SDN BHD", phone: "60974098816 / 6097409996", city: "KOTA BHARU", attention: "MR. KIAN YEW CHING", state: "Kelantan", type: "call", link: "tel:60974098816" },
+            { name: "TF VALUE MART SDN BHD (TUNJUNG)", phone: "60113060961", city: "KOTA BHARU", attention: "MR RIDWAN", state: "Kelantan", type: "call", link: "tel:60113060961" },
+            { name: "WAN BURGER (PASIR MAS)", phone: "60139346897", city: "KOTA BHARU", attention: "EN NUR IZWAN", state: "Kelantan", type: "wa", link: "https://wa.me/60139346897" },
+            { name: "TF VALUE-MART SDN BHD (KOTA BHARU)", phone: "60356134888", city: "KOTA BHARU", attention: "", state: "Kelantan", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE MART SDN BHD (GUA MUSANG)", phone: "60356134888", city: "GUA MUSANG", attention: "", state: "Kelantan", type: "call", link: "tel:60356134888" },
+            { name: "IZZ ZAFRAN TRADE", phone: "60195769964", city: "PASIR MAS", attention: "ENCIK ZULFADLI", state: "Kelantan", type: "wa", link: "https://wa.me/60195769964" },
+
+            // TERENGGANU
+            { name: "ANOK MA FROZEN (MAXWEAL PLT)", phone: "60199601150", city: "KUALA NERUS", attention: "MR AHMAD FARIES", state: "Terengganu", type: "wa", link: "https://wa.me/60199601150" },
+            { name: "BB FROZEN (TERENGGANU) SDN BHD", phone: "601116108003", city: "DUNGUN", attention: "MADAM NG", state: "Terengganu", type: "wa", link: "https://wa.me/601116108003" },
+            { name: "UMMI THAQIF (M) SDN BHD", phone: "60133605936", city: "CUKAI", attention: "FIZI", state: "Terengganu", type: "wa", link: "https://wa.me/60133605936" },
+            { name: "F ONE FROZEN AND INGREDIENT SDN BHD", phone: "60169593335", city: "DUNGUN", attention: "CHEW MOI LING", state: "Terengganu", type: "wa", link: "https://wa.me/60169593335" },
+            { name: "JOHAN FROZEN MART", phone: "60137009300", city: "KAMPUNG RAJA", attention: "", state: "Terengganu", type: "wa", link: "https://wa.me/60137009300" },
+            { name: "HANS MART (ALUR LINTANG)", phone: "60132429914", city: "BESUT", attention: "SHAHRUL", state: "Terengganu", type: "wa", link: "https://wa.me/60132429914" },
+            { name: "HANS MART (JERTEH)", phone: "60137009300", city: "BESUT", attention: "SHAHRUL", state: "Terengganu", type: "wa", link: "https://wa.me/60137009300" },
+            { name: "KARISMA ENTERPRISE", phone: "60143166486", city: "KEMAMAN", attention: "SHARIFAH NURUL ATIKAH", state: "Terengganu", type: "wa", link: "https://wa.me/60143166486" },
+            { name: "KEMAMAN JAYA TRADING", phone: "60195565021", city: "KEMAMAN", attention: "", state: "Terengganu", type: "wa", link: "https://wa.me/60195565021" },
+            { name: "KEMAMAN KEBAB", phone: "60129528042", city: "KEMAMAN", attention: "CIK WAN SYAMILAH", state: "Terengganu", type: "call", link: "tel:60129528042" },
+            { name: "KT KRIM TRADING", phone: "6096227681", city: "KUALA TERENGGANU", attention: "MR AW", state: "Terengganu", type: "call", link: "tel:6096227681" },
+            { name: "ROTI JOHN CHEESE JALAN BUDIMAN", phone: "60193345183", city: "KUALA TERENGGANU", attention: "MOHD HAZIZI RAZALI", state: "Terengganu", type: "wa", link: "https://wa.me/60193345183" },
+            { name: "NASRUL FROZEN FOOD ENTERPRISE", phone: "60166706811", city: "KUALA TERENGGANU", attention: "ENCIK NASRULLAH", state: "Terengganu", type: "wa", link: "https://wa.me/60166706811" },
+            { name: "PERNIAGAAN HABEEBA MAJEED", phone: "6096222679", city: "KUALA TERENGGANU", attention: "NOORULHUDA", state: "Terengganu", type: "call", link: "tel:6096222679" },
+            { name: "SATIPAH ENTERPRISE", phone: "60199143163", city: "KUALA TERENGGANU", attention: "CIK SATIPAH", state: "Terengganu", type: "wa", link: "https://wa.me/60199143163" },
+            { name: "SUMO FOOD ZONE SDN BHD", phone: "60129210602", city: "KUALA TERENGGANU", attention: "MR TAN", state: "Terengganu", type: "wa", link: "https://wa.me/60129210602" },
+            { name: "ZNZ GROUP ENTERPRISE", phone: "60138375086", city: "KUALA TERENGGANU", attention: "AHMAD ZAKIRIN", state: "Terengganu", type: "wa", link: "https://wa.me/60138375086" },
+            { name: "ZS TAWAKAL ENTERPRISE", phone: "60169254765", city: "KUALA BERANG", attention: "MISS NURBAITY", state: "Terengganu", type: "wa", link: "https://wa.me/60169254765" },
+
+            // PAHANG
+            { name: "HADDAD JAYA FOOD ENTERPRISE", phone: "60199561006", city: "TEMERLOH", attention: "SYED NAQIB", state: "Pahang", type: "wa", link: "https://wa.me/60199561006" },
+            { name: "TF VALUE-MART SDN BHD (TEMERLOH)", phone: "60356134888", city: "TEMERLOH", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "PUSAT RAWATAN BEKAM AL YAKIN", phone: "60199658254", city: "KUANTAN", attention: "MOHD ADHA BIN IBRAHIM", state: "Pahang", type: "wa", link: "https://wa.me/60199658254" },
+            { name: "ASFI FROZEN FOOD", phone: "60199299934", city: "KUANTAN", attention: "NUR ASMA ADILA", state: "Pahang", type: "wa", link: "https://wa.me/60199299934" },
+            { name: "BIG STORE WHOLESALES SDN BHD", phone: "60169354710", city: "KUANTAN", attention: "MR LEE", state: "Pahang", type: "wa", link: "https://wa.me/60169354710" },
+            { name: "NAZWANDI ENTERPRISE", phone: "60129847342", city: "KUANTAN", attention: "MOHD NAZROL", state: "Pahang", type: "wa", link: "https://wa.me/60129847342" },
+            { name: "NAZWAN PITA KEBAB", phone: "601110018996", city: "KUANTAN", attention: "ENCIK NAZWAN", state: "Pahang", type: "wa", link: "https://wa.me/601110018996" },
+            { name: "OI FOOD SUPPLY SDN BHD", phone: "60129833718", city: "KUANTAN", attention: "TAN SIEW HONG", state: "Pahang", type: "call", link: "tel:60129833718" },
+            { name: "OI FOOD FRESH MART SDN BHD", phone: "60129833718", city: "KUANTAN", attention: "TAN SIEW HONG", state: "Pahang", type: "call", link: "tel:60129833718" },
+            { name: "OI FROZEN SUPPLY SDN BHD", phone: "6095396260", city: "KUANTAN", attention: "LAI CHOY PENG", state: "Pahang", type: "call", link: "tel:6095396260" },
+            { name: "PERNIAGAAN HEXA MEGAH", phone: "60165055746", city: "KUANTAN", attention: "PUAN ROSNAWATI", state: "Pahang", type: "wa", link: "https://wa.me/60165055746" },
+            { name: "PAK CIK FROZEN MART", phone: "60102688788", city: "KUANTAN", attention: "MR WALLIAM", state: "Pahang", type: "wa", link: "https://wa.me/60102688788" },
+            { name: "TEAM POINT CREAMERY (M) SDN BHD", phone: "60129660068", city: "KUANTAN", attention: "MISS LEE", state: "Pahang", type: "wa", link: "https://wa.me/60129660068" },
+            { name: "SINAR LANTING ENTERPRISE", phone: "60145284690", city: "CHENOR", attention: "", state: "Pahang", type: "wa", link: "https://wa.me/60145284690" },
+            { name: "SG WANG ENTERPRISE", phone: "6092965866", city: "MENTAKAB", attention: "MR YONG", state: "Pahang", type: "call", link: "tel:6092965866" },
+            { name: "TF VALUE-MART SDN BHD (BENTONG)", phone: "60356134888", city: "BENTONG", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (BENTONG 2)", phone: "60356134888", city: "BENTONG", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (BERA)", phone: "60356134888", city: "TRIANG", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (JERANTUT)", phone: "60356134888", city: "JERANTUT", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (KUALA LIPIS)", phone: "60356134888", city: "KUALA LIPIS", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (MENTAKAB)", phone: "60356134888", city: "MENTAKAB", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (RAUB)", phone: "60356134888", city: "RAUB", attention: "", state: "Pahang", type: "call", link: "tel:60356134888" },
+            { name: "TF VALUE-MART SDN BHD (JENGKA)", phone: "60198826718", city: "BANDAR PUSAT JENGKA", attention: "MR THARIQ", state: "Pahang", type: "wa", link: "https://wa.me/60198826718" },
+            { name: "TF VALUE-MART SDN BHD (CAMERON HIGHLANDS)", phone: "60138552051", city: "CAMERON HIGHLANDS", attention: "MR GAFFAR", state: "Pahang", type: "wa", link: "https://wa.me/60138552051" }
+        ];
+
+        // Sort all distributors alphabetically (A to Z) by name
+        distributorsData.sort((a, b) => a.name.localeCompare(b.name));
+
+        let activeStateFilter = 'all';
+
+        function setFilterState(state, btn) {
+            activeStateFilter = state;
+            
+            // Toggle active class on state filter buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            renderDistributors();
+        }
+
+        function createCardHTML(item) {
+            const buttonHTML = item.type === 'wa' 
+                ? `<a href="${item.link}" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>`
+                : `<a href="${item.link}" class="btn-call"><i class="fa-solid fa-phone"></i> Call</a>`;
+
+            const attentionHTML = item.attention 
+                ? `<p class="info-row"><i class="fa-solid fa-user"></i> <span><strong>Attention:</strong> ${item.attention}</span></p>` 
+                : '';
+
+            return `
+                <div class="distributor-card">
+                    <div class="card-header">
+                        <h3>${item.name}</h3>
+                    </div>
+                    <div class="card-details">
+                        <p class="info-row"><i class="fa-solid fa-phone"></i> <span><strong>Tel:</strong> ${item.phone}</span></p>
+                        <p class="info-row"><i class="fa-solid fa-map-pin"></i> <span><strong>State:</strong> ${item.state}</span></p>
+                        <p class="info-row"><i class="fa-solid fa-city"></i> <span><strong>City:</strong> ${item.city}</span></p>
+                        ${attentionHTML}
+                    </div>
+                    <div class="card-actions">
+                        ${buttonHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDistributors() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const displayContainer = document.getElementById('distributorsDisplay');
+            const noResults = document.getElementById('noResults');
+
+            // Filter data according to active State tab and search query
+            const filteredData = distributorsData.filter(item => {
+                const matchesState = (activeStateFilter === 'all' || item.state.toLowerCase() === activeStateFilter.toLowerCase());
+                
+                const matchesSearch = !searchQuery || 
+                    item.name.toLowerCase().includes(searchQuery) || 
+                    item.city.toLowerCase().includes(searchQuery) || 
+                    item.state.toLowerCase().includes(searchQuery) ||
+                    item.phone.includes(searchQuery);
+
+                return matchesState && matchesSearch;
+            });
+
+            if (filteredData.length === 0) {
+                displayContainer.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            // IF "ALL" IS SELECTED: Display as ONE combined single grid (Alphabetical A-Z, no state headers)
+            if (activeStateFilter === 'all') {
+                const cardsHTML = filteredData.map(item => createCardHTML(item)).join('');
+                displayContainer.innerHTML = `
+                    <div class="distributor-grid">
+                        ${cardsHTML}
+                    </div>
+                `;
+            } else {
+                // IF A SPECIFIC STATE IS SELECTED: Show State Header Title
+                const stateNameFormatted = activeStateFilter.charAt(0).toUpperCase() + activeStateFilter.slice(1);
+                const cardsHTML = filteredData.map(item => createCardHTML(item)).join('');
+                
+                displayContainer.innerHTML = `
+                    <h2 class="section-header-title"><i class="fa-solid fa-location-dot"></i> ${stateNameFormatted}</h2>
+                    <div class="distributor-grid">
+                        ${cardsHTML}
+                    </div>
+                `;
+            }
+        }
+
+        // Initial rendering on page load
+        document.addEventListener('DOMContentLoaded', renderDistributors);
+    </script>
+
+</body>
+</html>

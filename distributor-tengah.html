@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zon Tengah Distributors | Salim Melawati Kebab</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --salim-red: #ba0c18;
+            --salim-red-hover: #960812;
+            --salim-green: #008d4c;
+            --salim-green-hover: #006e3b;
+            --btn-dark: #1e293b;
+            --btn-dark-hover: #0f172a;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* Header Navigation */
+        header {
+            background: var(--salim-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-group img {
+            height: 45px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--salim-green);
+            border-radius: 2px;
+        }
+
+        /* Page Layout & Controls */
+        .page-header {
+            padding: 2.5rem 0 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.6rem 1.2rem;
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            width: fit-content;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background: var(--salim-red);
+            color: #ffffff;
+            border-color: var(--salim-red);
+        }
+
+        .page-title h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .page-title p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Filter Controls Container */
+        .controls-wrapper {
+            margin: 1.5rem 0 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* State Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            color: var(--text-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--salim-red);
+            color: #ffffff;
+            border-color: var(--salim-red);
+            box-shadow: 0 4px 12px rgba(186, 12, 24, 0.2);
+        }
+
+        /* Search Input */
+        .search-input-container {
+            position: relative;
+            max-width: 600px;
+        }
+
+        .search-input-container i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            outline: none;
+            background: #ffffff;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--salim-red);
+            box-shadow: 0 0 0 4px rgba(186, 12, 24, 0.1);
+        }
+
+        /* Section Title Header */
+        .section-header-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--salim-red);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Card Grid Layout */
+        .distributor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        /* Unified Card Structure & Uniform Heights */
+        .distributor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .distributor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--salim-red);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            min-height: 48px;
+        }
+
+        .card-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-gray);
+        }
+
+        .info-row i {
+            color: var(--salim-red);
+            width: 16px;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .info-row strong {
+            color: var(--text-dark);
+        }
+
+        /* Standardized Action Buttons */
+        .card-actions {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--salim-green);
+            color: #ffffff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--salim-green-hover);
+            color: #ffffff;
+        }
+
+        .btn-call {
+            background-color: var(--btn-dark);
+            color: #ffffff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background-color: var(--btn-dark-hover);
+            color: #ffffff;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: #ffffff;
+            border-radius: 12px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.8rem 0;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            .distributor-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-tabs {
+                width: 100%;
+            }
+            .tab-btn {
+                flex: 1 1 calc(50% - 10px);
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-group">
+                    <img src="productpic/SALIM.png" alt="Salim Logo">
+                    <img src="productpic/mksb.png" alt="MKSB Logo">
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produk.html">Products</a></li>
+                    <li><a href="distributor.html" class="active">Distributor</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Page Header & Back Button -->
+        <div class="page-header">
+            <a href="javascript:history.back()" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+            <div class="page-title">
+                <h1>Zon Tengah Distributors</h1>
+                <p>Find authorized distributors across Selangor and Kuala Lumpur.</p>
+            </div>
+        </div>
+
+        <!-- Controls: State Filter Tabs & Search Bar -->
+        <div class="controls-wrapper">
+            <div class="filter-tabs">
+                <button class="tab-btn active" onclick="setFilterState('all', this)">
+                    <i class="fa-solid fa-layer-group"></i> All States
+                </button>
+                <button class="tab-btn" onclick="setFilterState('selangor', this)">
+                    <i class="fa-solid fa-map-pin"></i> Selangor
+                </button>
+                <button class="tab-btn" onclick="setFilterState('kuala lumpur', this)">
+                    <i class="fa-solid fa-map-pin"></i> Kuala Lumpur
+                </button>
+            </div>
+
+            <div class="search-input-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search distributor by name, city, or state..." onkeyup="renderDistributors()">
+            </div>
+        </div>
+
+        <div id="noResults" class="no-results">
+            No distributors found matching your search.
+        </div>
+
+        <!-- Dynamic Container For Distributors -->
+        <div id="distributorsDisplay"></div>
+
+    </main>
+
+    <!-- Master Data & Dynamic Filtering Script -->
+    <script>
+        // Helper function to format phone numbers to standard international format (without dashes/spaces)
+        function formatPhoneNumber(phone) {
+            if (!phone) return '';
+            let cleaned = phone.replace(/[^0-9]/g, '');
+            if (cleaned.startsWith('0')) {
+                cleaned = '6' + cleaned;
+            }
+            return cleaned;
+        }
+
+        // Helper function to check if a phone number is a mobile number (WhatsApp-capable)
+        function isMobileNumber(phone) {
+            const cleaned = formatPhoneNumber(phone);
+            // Malaysian mobile numbers start with 601
+            return cleaned.startsWith('601');
+        }
+
+        // Raw Dataset extracted directly from C51.pdf (FAIZAL, RASHDAN, KAMIL)
+        const rawDistributorsData = [
+            // FAIZAL
+            { name: "CKY COLD STORAGE TRADING", phone: "60133597353", city: "SUNGAI BESAR", attention: "CHIA KIAN CHENG", state: "Selangor" },
+            { name: "DIDI MAJU SDN. BHD.", phone: "601158969790", city: "RAWANG", attention: "MR LAU", state: "Selangor" },
+            { name: "ICEBERG FRESH MART SDN BHD", phone: "60123889461", city: "RAWANG", attention: "MR MARK", state: "Selangor" },
+            { name: "PROMENADE VENTURES SDN BHD", phone: "60126443260", city: "SHAH ALAM", attention: "MISS SARAH", state: "Selangor" },
+            { name: "SELAYANG GEN WHOLESALE SDN BHD", phone: "60122606824", city: "BATU CAVES", attention: "MR WONG", state: "Selangor" },
+            { name: "TF VALUE-MART SDN BHD (SUBANG JAYA)", phone: "60128992638", city: "SUBANG JAYA", attention: "ENCIK MIE", state: "Selangor" },
+            { name: "TF VALUE-MART SDN BHD (SUNGAI BESAR)", phone: "601161395821", city: "SUNGAI BESAR", attention: "FAZ", state: "Selangor" },
+            { name: "VOVO PLASTIC TRADING", phone: "0192501880", city: "SELANGOR", attention: "MR LAW", state: "Selangor" },
+            { name: "YAT FONG HERBS N FOODS SDN BHD (BUKIT SENTOSA)", phone: "6054583163", city: "RAWANG", attention: "", state: "Selangor" },
+            { name: "LIAN SENG FROZEN SDN BHD", phone: "60362639498", city: "KEPONG", attention: "", state: "Kuala Lumpur" },
+            { name: "TF VALUE-MART SDN BHD (TAMAN CONNAUGHT)", phone: "60163969862", city: "KUALA LUMPUR", attention: "AHMAD ZAID", state: "Kuala Lumpur" },
+
+            // RASHDAN
+            { name: "CHONGSWAY TRADING (M) SDN BHD", phone: "60122809463", city: "PETALING JAYA", attention: "ANDY CHONG", state: "Selangor" },
+            { name: "TEO & YEE TRADING (M) SDN BHD", phone: "60377850733", city: "PETALING JAYA", attention: "MR TEO WAI LUN", state: "Selangor" },
+            { name: "DB FROZEN SDN. BHD.", phone: "60132883535", city: "BATU CAVES", attention: "MAHADI BIN OMAR", state: "Selangor" },
+            { name: "IWANI FOOD (GREENWOOD)", phone: "60341051800", city: "BATU CAVES", attention: "MISS IZZATIE", state: "Selangor" },
+            { name: "TOP GLOBAL FOOD AND BEVERAGES SDN BHD", phone: "60183862297", city: "BATU CAVES", attention: "FUAD", state: "Selangor" },
+            { name: "EMZEKA TRADING ENTERPRISE", phone: "60123979116", city: "SUNGAI BULOH", attention: "ENCIK ADI", state: "Selangor" },
+            { name: "EIM FROZEN AND TRADING", phone: "601126256526", city: "SEMENYIH", attention: "ABG EIM", state: "Selangor" },
+            { name: "LF FROZEN FOOD", phone: "60198092303", city: "SEMENYIH", attention: "", state: "Selangor" },
+            { name: "SEMENYIH FROZEN FOOD MART", phone: "60164443391", city: "SEMENYIH", attention: "MR RAYMOND", state: "Selangor" },
+            { name: "KL FROZEN FOOD", phone: "60331802746", city: "BANTING", attention: "CHUA SIEW YINN", state: "Selangor" },
+            { name: "LANGAT FROZEN FOOD MART (HULU LANGAT) SDN BHD", phone: "60103663464", city: "HULU LANGAT", attention: "MR JOHN TAN", state: "Selangor" },
+            { name: "LAZIM FROZEN", phone: "60389202615", city: "BANDAR BARU BANGI", attention: "MISS SHAHRINA", state: "Selangor" },
+            { name: "JAWA MAJU SDN. BHD.", phone: "60193331727", city: "KLANG", attention: "MR. LOO ENG GUAN", state: "Selangor" },
+            { name: "KLANG FROZEN PRODUCTS SDN BHD", phone: "60166201730", city: "KLANG", attention: "", state: "Selangor", type: "call" },
+            { name: "MENG KONG FROZEN SDN BHD", phone: "60330812935", city: "KLANG", attention: "MR ALAN", state: "Selangor" },
+            { name: "SIN SOON ONN FROZEN FOOD SDN BHD", phone: "60332929198", city: "KLANG", attention: "MS LEONG", state: "Selangor" },
+            { name: "E SEASON ENTERPRISE", phone: "60333921615", city: "KLANG", attention: "", state: "Selangor" },
+            { name: "SIN SOON ONN FROZEN FOOD SDN BHD (HQ)", phone: "60333428186", city: "KLANG", attention: "", state: "Selangor" },
+            { name: "NBK MAJU ENTERPRISE (M) SDN BHD", phone: "60142346337", city: "SEPANG", attention: "PUAN NOREEN BINTI KARIM", state: "Selangor" },
+            { name: "NKL FROZEN SDN BHD", phone: "60192287799", city: "BANTING", attention: "ENG", state: "Selangor" },
+            { name: "PASARAYA JOMMART", phone: "60387687532", city: "DENGKIL", attention: "ENCIK YAHYA AZHARI", state: "Selangor" },
+            { name: "PASARAYA JOMMART (CYBERSOUTH)", phone: "60387687532", city: "DENGKIL", attention: "SOJIB", state: "Selangor" },
+            { name: "SORU GROUP SDN. BHD.", phone: "60125237665", city: "SUBANG JAYA", attention: "MR AMIR", state: "Selangor" },
+            { name: "ST FROZEN FOOD MART", phone: "60196848111", city: "SEPANG", attention: "WONG SHI KHAI", state: "Selangor" },
+            { name: "SHAHFIZ TRADING", phone: "60183551858", city: "KAJANG", attention: "EN HAFIZ", state: "Selangor" },
+            { name: "NORAZ GALLERY MARKETING", phone: "60136292992", city: "KUALA SELANGOR", attention: "AZIZUL RAHMAN", state: "Selangor" },
+            { name: "NUR AZ PANDAN ENTERPRISE", phone: "60193927360", city: "RAWANG", attention: "AZNIAH BINTI TARSEH", state: "Selangor" },
+            { name: "SENIMAN PAUH FROZEN FOOD SDN BHD", phone: "60192532664", city: "RAWANG", attention: "KHAIRUL ANWAR", state: "Selangor" },
+            { name: "WCS RAWANG FROZEN FOOD TRADING", phone: "60102266230", city: "RAWANG", attention: "WONG WAI KIAT", state: "Selangor" },
+            { name: "SENG CHEIONG TRADING SDN BHD", phone: "60162850548", city: "KUALA LUMPUR", attention: "SUSAN", state: "Kuala Lumpur" },
+            { name: "MY FROZEN MART SUPPLIES SDN BHD", phone: "60172314134", city: "SETAPAK", attention: "MR JACK", state: "Kuala Lumpur" },
+            { name: "ROSLAN KERAMAT", phone: "60129078827", city: "KUALA LUMPUR", attention: "", state: "Kuala Lumpur" },
+            { name: "ROSLAN IBERAHIM FROZEN SDN BHD", phone: "60390829494", city: "CHERAS", attention: "ROSLAN", state: "Selangor" },
+            { name: "TONG LEE FROZEN TRADING", phone: "60183226466", city: "KUALA LUMPUR", attention: "CHEAH KEE CHEONG", state: "Kuala Lumpur" },
+            { name: "TF VALUE MART SDN BHD (BANDAR SRI DAMANSARA)", phone: "60176540237", city: "KUALA LUMPUR", attention: "MR RAHMAN", state: "Kuala Lumpur" },
+            { name: "IWANI FOOD (M) SDN. BHD.", phone: "60341051800", city: "KUALA LUMPUR", attention: "MISS IZZATIE", state: "Kuala Lumpur" },
+
+            // KAMIL
+            { name: "AK NAIMI MEAT SHOP", phone: "60122032186", city: "SHAH ALAM", attention: "", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60126388616", city: "BATU CAVES", attention: "MAYBOH THEN", state: "Selangor" },
+            { name: "CS BROTHERS SDN BHD", phone: "60189704017", city: "KAJANG", attention: "BG", state: "Selangor", type: "call" },
+            { name: "CS BROTHERS SDN BHD", phone: "60391083050", city: "CHERAS", attention: "TP", state: "Selangor" },
+            { name: "CS BROTHERS SDN BHD", phone: "60391083050", city: "SEMENYIH", attention: "BTK", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60124487138", city: "SHAH ALAM", attention: "", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60124930684", city: "RAWANG", attention: "MISS MANDY", state: "Selangor" },
+            { name: "CS BROTHERS SDN BHD", phone: "60125683699", city: "KAJANG", attention: "SP", state: "Selangor", type: "call" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60124487138", city: "KAJANG", attention: "", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60342784278", city: "AMPANG", attention: "", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60126388616", city: "SUNGAI BULOH", attention: "MAYBOH THEN", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60129442168", city: "SUNGAI BULOH", attention: "MR TEO", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60123528982", city: "PETALING JAYA", attention: "MAYBOH THEN", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60124487138", city: "SHAH ALAM", attention: "CIK SALINA", state: "Selangor" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60125920836", city: "PUCHONG", attention: "CARMEN", state: "Selangor" },
+            { name: "CS BROTHERS SDN BHD", phone: "60391083050", city: "CHERAS", attention: "HL", state: "Selangor" },
+            { name: "ENG MENG FROZEN FOOD SDN BHD", phone: "60389427378", city: "PUCHONG", attention: "", state: "Selangor" },
+            { name: "123 FRESH MART SDN. BHD.", phone: "60197197030", city: "RAWANG", attention: "LAU SUE YEE", state: "Selangor" },
+            { name: "HAZAM FROZEN", phone: "60193186997", city: "SHAH ALAM", attention: "HAZLIN YAAKOB", state: "Selangor" },
+            { name: "LS FROZEN FOOD", phone: "60162215208", city: "SERI KEMBANGAN", attention: "LAU SOOI FUN", state: "Selangor" },
+            { name: "MY FROZEN & MART", phone: "60136625551", city: "BANGI", attention: "PUAN ASMA", state: "Selangor" },
+            { name: "MY A1 SDN BHD (SAUJANA UTAMA)", phone: "60367301301", city: "SUNGAI BULOH", attention: "", state: "Selangor" },
+            { name: "MY A1 SDN BHD (HILLPARK)", phone: "60367301301", city: "PUNCAK ALAM", attention: "", state: "Selangor" },
+            { name: "MY A1 SDN BHD (DESA COALFIELD)", phone: "60177701094", city: "SUNGAI BULOH", attention: "", state: "Selangor" },
+            { name: "GRADE FOODS PROCESSING SDN BHD", phone: "60166639790", city: "BATU CAVES", attention: "DILLA", state: "Selangor" },
+            { name: "MY A1 SDN BHD (BUKIT SENTOSA)", phone: "60173751507", city: "RAWANG", attention: "", state: "Selangor" },
+            { name: "NOVI FROZEN FOODS", phone: "60163865710", city: "SHAH ALAM", attention: "MUHAMAD AMIRUL", state: "Selangor" },
+            { name: "SRI TERNAK FOOD MART SDN BHD", phone: "60123248821", city: "BATU CAVES", attention: "", state: "Selangor" },
+            { name: "SEASONS FROZEN FOOD SUPPLY SDN BHD", phone: "60380603781", city: "PUCHONG", attention: "KEN NG", state: "Selangor" },
+            { name: "SHAHRUL FRESH & FROZEN (M) SDN BHD (DAMAI PERDANA)", phone: "60122729074", city: "CHERAS", attention: "ENCIK SHAHRUL", state: "Selangor" },
+            { name: "SHAHRUL FRESH & FROZEN (M) SDN BHD (BANGI)", phone: "60122729074", city: "KAJANG", attention: "ENCIK SHAHRUL", state: "Selangor" },
+            { name: "SRI TERNAK MART (SK) SDN BHD", phone: "60389453888", city: "SERI KEMBANGAN", attention: "IZZAH", state: "Selangor" },
+            { name: "ST ROSYAM MART SDN BHD (SEMENYIH)", phone: "60387276388", city: "SEMENYIH", attention: "", state: "Selangor" },
+            { name: "SHAHRUL FRESH & FROZEN (M) SDN BHD (TUN PERAK)", phone: "60122729074", city: "CHERAS", attention: "ENCIK SHAHRUL", state: "Selangor" },
+            { name: "ST ROSYAM MART SDN BHD (SHAH ALAM)", phone: "60122508821", city: "SHAH ALAM", attention: "", state: "Selangor" },
+            { name: "ST ROSYAM MART (SG BULOH) SDN BHD", phone: "60123248821", city: "SHAH ALAM", attention: "", state: "Selangor" },
+            { name: "ST ROSYAM MART SDN BHD (KLANG)", phone: "60122408821", city: "KLANG", attention: "CIK NALINI", state: "Selangor" },
+            { name: "T&T BEVERAGE SDN BHD", phone: "60362421159", city: "BATU CAVES", attention: "MR LIM", state: "Selangor" },
+            { name: "TF VALUE-MART SDN BHD (BATU CAVES)", phone: "60163192011", city: "BATU CAVES", attention: "MR PUVEN", state: "Selangor" },
+            { name: "WANMART FOOD SDN BHD", phone: "60355417836", city: "SHAH ALAM", attention: "PUAN ROHANA", state: "Selangor" },
+            { name: "CS BROTHERS SDN BHD", phone: "60391083050", city: "CHERAS", attention: "DP", state: "Kuala Lumpur" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60391743661", city: "CHERAS", attention: "", state: "Kuala Lumpur" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60361363289", city: "PANDAN JAYA", attention: "MANDY", state: "Kuala Lumpur" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60129677138", city: "KUALA LUMPUR", attention: "", state: "Kuala Lumpur" },
+            { name: "CB FROZEN FOOD SDN BHD - DC", phone: "60124487138", city: "KUALA LUMPUR", attention: "", state: "Kuala Lumpur" },
+            { name: "SRI TIGA FOOD ENTERPRISE", phone: "60128757009", city: "KUALA LUMPUR", attention: "IRA", state: "Kuala Lumpur" },
+            { name: "SRI SEGAR BESTARI SDN. BHD. (SETAPAK)", phone: "60122828445", city: "KUALA LUMPUR", attention: "MR ALVIN", state: "Kuala Lumpur" },
+            { name: "SRI SEGAR BESTARI SDN. BHD. (KEPONG)", phone: "60122828445", city: "KUALA LUMPUR", attention: "MR ALVIN", state: "Kuala Lumpur" },
+            { name: "ST ROSYAM MART SDN BHD", phone: "60342522288", city: "KUALA LUMPUR", attention: "", state: "Kuala Lumpur" },
+            { name: "SAGA MISSION FROZEN FOODS SDN BHD", phone: "60342958222", city: "KUALA LUMPUR", attention: "MISS BELL", state: "Kuala Lumpur" },
+            { name: "ST ROSYAM MART SDN BHD (JAKEL SQUARE)", phone: "60138094309", city: "KUALA LUMPUR", attention: "ROZITA", state: "Kuala Lumpur" }
+        ];
+
+        // Deduplicate records that are identical in name, phone, and city
+        const uniqueDistributors = [];
+        const seenKeys = new Set();
+
+        rawDistributorsData.forEach(item => {
+            const key = `${item.name.trim().toLowerCase()}_${item.city.trim().toLowerCase()}_${item.phone.trim()}`;
+            if (!seenKeys.has(key)) {
+                seenKeys.add(key);
+                uniqueDistributors.push(item);
+            }
+        });
+
+        // Map and process distributors data to set dynamic link types (wa vs call)
+        const distributorsData = uniqueDistributors.map(item => {
+            const formattedPhone = formatPhoneNumber(item.phone);
+            const isMob = item.phone ? isMobileNumber(item.phone) : false;
+            // Respect explicit type override if provided, otherwise check mobile status
+            const finalType = item.type || (isMob ? 'wa' : 'call');
+            return {
+                ...item,
+                type: finalType,
+                link: formattedPhone ? (finalType === 'wa' ? `https://wa.me/${formattedPhone}` : `tel:${formattedPhone}`) : '#'
+            };
+        });
+
+        // Sort all distributors alphabetically (A to Z) by name
+        distributorsData.sort((a, b) => a.name.localeCompare(b.name));
+
+        let activeStateFilter = 'all';
+
+        function setFilterState(state, btn) {
+            activeStateFilter = state;
+            
+            // Toggle active class on state filter buttons
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            renderDistributors();
+        }
+
+        function createCardHTML(item) {
+            let buttonHTML = '';
+            if (item.phone) {
+                buttonHTML = item.type === 'wa' 
+                    ? `<a href="${item.link}" target="_blank" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>`
+                    : `<a href="${item.link}" class="btn-call"><i class="fa-solid fa-phone"></i> Call</a>`;
+            } else {
+                buttonHTML = `<button class="btn-call" disabled style="opacity:0.6; cursor:not-allowed;"><i class="fa-solid fa-phone-slash"></i> N/A</button>`;
+            }
+
+            const attentionHTML = item.attention 
+                ? `<p class="info-row"><i class="fa-solid fa-user"></i> <span><strong>Attention:</strong> ${item.attention}</span></p>` 
+                : '';
+
+            const phoneDisplay = item.phone ? item.phone : 'N/A';
+
+            return `
+                <div class="distributor-card">
+                    <div class="card-header">
+                        <h3>${item.name}</h3>
+                    </div>
+                    <div class="card-details">
+                        <p class="info-row"><i class="fa-solid fa-phone"></i> <span><strong>Tel:</strong> ${phoneDisplay}</span></p>
+                        <p class="info-row"><i class="fa-solid fa-map-pin"></i> <span><strong>State:</strong> ${item.state}</span></p>
+                        <p class="info-row"><i class="fa-solid fa-city"></i> <span><strong>City:</strong> ${item.city}</span></p>
+                        ${attentionHTML}
+                    </div>
+                    <div class="card-actions">
+                        ${buttonHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDistributors() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const displayContainer = document.getElementById('distributorsDisplay');
+            const noResults = document.getElementById('noResults');
+
+            // Filter data according to active State tab and search query
+            const filteredData = distributorsData.filter(item => {
+                const matchesState = (activeStateFilter === 'all' || item.state.toLowerCase() === activeStateFilter.toLowerCase());
+                
+                const matchesSearch = !searchQuery || 
+                    item.name.toLowerCase().includes(searchQuery) || 
+                    item.city.toLowerCase().includes(searchQuery) || 
+                    item.state.toLowerCase().includes(searchQuery) ||
+                    item.phone.includes(searchQuery);
+
+                return matchesState && matchesSearch;
+            });
+
+            if (filteredData.length === 0) {
+                displayContainer.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            const cardsHTML = filteredData.map(item => createCardHTML(item)).join('');
+            displayContainer.innerHTML = `<div class="distributor-grid">${cardsHTML}</div>`;
+        }
+
+        // Render data on page load
+        document.addEventListener('DOMContentLoaded', renderDistributors);
+    </script>
+</body>
+</html>

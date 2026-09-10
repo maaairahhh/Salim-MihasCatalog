@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Salim Melawati Kebab</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --salim-red: #ba0c18;
+            --salim-red-hover: #960812;
+            --salim-green: #008d4c;
+            --salim-green-hover: #006e3b;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* 1. Header Navigation */
+        header {
+            background: var(--salim-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-group img {
+            height: 45px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-links a.active {
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--salim-green);
+            border-radius: 2px;
+        }
+
+        /* 2. Contact Header Title */
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 1.5rem 0;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--salim-red);
+            margin: 0.6rem auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 3. Contact Info Grid Cards */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(186, 12, 24, 0.1);
+            border-color: rgba(186, 12, 24, 0.3);
+        }
+
+        .contact-icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(186, 12, 24, 0.08);
+            color: var(--salim-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon-box {
+            background: var(--salim-red);
+            color: #ffffff;
+        }
+
+        .contact-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--salim-red);
+        }
+
+        /* 4. Google Map Section */
+        .map-section {
+            margin: 3rem 0;
+        }
+
+        .map-wrapper {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 5. Contact Form Section */
+        .form-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            margin: 3.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--salim-red);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(186, 12, 24, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .btn-submit-container {
+            text-align: right;
+        }
+
+        .btn-send {
+            background: var(--salim-red);
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-send:hover {
+            background: var(--salim-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(186, 12, 24, 0.4);
+        }
+
+        /* 6. Dealer Banner / Action Card Style */
+        .dealer-banner {
+            margin: 3.5rem 0 5rem 0;
+        }
+
+        .dealer-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .dealer-card:hover {
+            background: var(--salim-red);
+            border-color: var(--salim-red);
+            color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(186, 12, 24, 0.25);
+        }
+
+        .dealer-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .dealer-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .dealer-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .dealer-card .card-arrow {
+            font-size: 1.5rem;
+            color: var(--salim-green);
+            transition: var(--transition);
+        }
+
+        .dealer-card:hover .card-arrow {
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.8rem 0;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .form-section {
+                padding: 2rem 1.5rem;
+            }
+            .dealer-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .dealer-card .card-arrow {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-group img {
+                height: 36px;
+            }
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            .btn-send {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-group">
+                    <img src="productpic/SALIM.png" alt="Salim Logo">
+                    <img src="productpic/mksb.png" alt="MKSB Logo">
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produk.html">Products</a></li>
+                    <li><a href="distributor.html">Distributor</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Contact</h1>
+            <p class="page-subtitle">Have questions? We'd love to hear from you.</p>
+        </section>
+
+        <!-- 3 Info Cards (Address, Email, Phone) -->
+        <section class="contact-info-grid">
+            
+            <!-- Address -->
+            <div class="contact-card">
+                <div class="contact-icon-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h3>Address</h3>
+                <p>Melawati Kebab Sdn Bhd, No 54-1F, Jalan 2/154D, Taman Desa Cheras, 56000 Kuala Lumpur, Malaysia</p>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card">
+                <div class="contact-icon-box">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <p><a href="mailto:melawatikebab1996@gmail.com">melawatikebab1996@gmail.com</a></p>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-card">
+                <div class="contact-icon-box">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <p><a href="tel:0391018951">03 9107 9708</a></p>
+            </div>
+
+        </section>
+
+        <!-- Google Map Section -->
+        <section class="map-section">
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.116668705051!2d101.7455829!3d3.0634629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3520df6d501b%3A0xb35a09ce78191d8!2sMelawati%20kebab%20Sdn%20Bhd!5e0!3m2!1sen!2smy!4v1710000000000!5m2!1sen!2smy" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="form-section">
+            <div class="form-header">
+                <h2>Get In Touch With Us</h2>
+            </div>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="text" name="first_name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="last_name" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <textarea name="message" placeholder="Message" required></textarea>
+                </div>
+
+                <div class="btn-submit-container">
+                    <button type="submit" class="btn-send">SEND <i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Contact Dealer Section Banner -->
+        <section class="dealer-banner">
+            <a href="distributor.html" class="dealer-card">
+                <div>
+                    <h3>Contact Our Official Dealer</h3>
+                    <p>Looking to buy in bulk or become a partner? Connect with our authorized distributors.</p>
+                </div>
+                <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+        </section>
+
+    </main>
+
+</body>
+</html>
