@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Products | Salim Melawati Kebab</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- CSS Header & Footer Komponen -->
+    <link rel="stylesheet" href="components.css">
+
+    <!-- JavaScript Header & Footer Komponen -->
+    <script src="components.js" defer></script>
+
     <style>
         :root {
             --salim-red: #ba0c18;
@@ -17,21 +24,53 @@
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --transition: all 0.3s ease;
         }
 
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+            position: relative;
         }
 
         body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.5;
-            overflow-x: hidden;
+        }
+
+        /* Protect Font Awesome pseudo-elements from font resets */
+        .fa-solid, .fa-brands, .fa-regular {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+        }
+
+        .site-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+            position: relative;
+        }
+
+        main-header {
+            display: block;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        main-footer {
+            display: block;
+            width: 100%;
+            position: relative;
+            z-index: 10;
         }
 
         .container {
@@ -40,70 +79,6 @@
             margin: 0 auto;
         }
 
-        /* Header Navigation Selaras Homepage */
-        header {
-            background: var(--salim-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-group img {
-            height: 45px;
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.88);
-            font-size: 1rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #ffffff;
-        }
-
-        .nav-links a.active {
-            position: relative;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--salim-green);
-            border-radius: 2px;
-        }
-
-        /* Header "Our Products" & Search Bar */
         .catalog-header {
             padding: 2.5rem 0 1rem 0;
             text-align: center;
@@ -117,10 +92,13 @@
             letter-spacing: -0.5px;
         }
 
+        /* Search Box */
         .search-box {
             max-width: 520px;
             margin: 0 auto;
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
         .search-box input {
@@ -140,30 +118,25 @@
             box-shadow: 0 4px 14px rgba(186, 12, 24, 0.12);
         }
 
-        .search-box i {
+        .search-box .search-svg {
             position: absolute;
             left: 1.1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--text-muted);
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            pointer-events: none;
         }
 
-        /* Category Filter Memanjang Satu Baris */
         .category-filter-wrapper {
             margin: 1.8rem 0 2rem 0;
             overflow-x: auto;
             padding-bottom: 8px;
             scrollbar-width: thin;
-        }
-
-        .category-filter-wrapper::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .category-filter-wrapper::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .category-filter {
@@ -173,6 +146,7 @@
             white-space: nowrap;
             width: max-content;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .filter-btn {
@@ -185,8 +159,6 @@
             color: var(--text-muted);
             cursor: pointer;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
         }
 
         .filter-btn:hover {
@@ -201,7 +173,6 @@
             border-color: var(--salim-red);
         }
 
-        /* Grid Produk */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -222,15 +193,12 @@
         .product-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            border-color: #cbd5e1;
         }
 
-        /* Gambar Produk */
         .product-img-box {
             width: 100%;
             height: 180px;
             background-color: #ffffff;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -241,10 +209,7 @@
         .product-img-box img {
             max-width: 100%;
             max-height: 100%;
-            width: auto;
-            height: auto;
             object-fit: contain;
-            display: block;
         }
 
         .product-content {
@@ -269,10 +234,18 @@
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
-        /* Harga Paket & Kotak */
+        .product-spec svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+
         .price-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -313,82 +286,48 @@
             color: var(--text-muted);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 0.8rem 0;
-            }
-            .nav-links {
-                gap: 1.2rem;
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
         @media (max-width: 600px) {
+            .category-filter {
+                margin: 0;
+            }
+
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.8rem;
-            }
-            .product-content {
-                padding: 0.7rem;
-            }
-            .product-title {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-group img {
-                height: 36px;
-            }
-            .nav-links a {
-                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo-group">
-                    <img src="productpic/SALIM.png" alt="Salim Logo">
-                    <img src="productpic/mksb.png" alt="MKSB Logo">
+    <div class="site-wrapper">
+
+        <main-header></main-header>
+
+        <main class="container">
+
+            <section class="catalog-header">
+                <h1>Our Products</h1>
+                <div class="search-box">
+                    <svg class="search-svg" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Cari nama produk (cth: Burger, Kebab, Sosej)..." aria-label="Cari produk">
                 </div>
+            </section>
 
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="produk.html" class="active">Products</a></li>
-                    <li><a href="distributor.html">Distributor</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-
-        <section class="catalog-header">
-            <h1>Our Products</h1>
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Cari nama produk (cth: Burger, Kebab, Sosej)...">
+            <div class="category-filter-wrapper">
+                <div class="category-filter" id="categoryFilter"></div>
             </div>
-        </section>
 
-        <div class="category-filter-wrapper">
-            <div class="category-filter" id="categoryFilter">
-            </div>
-        </div>
+            <section class="products-grid" id="productsGrid"></section>
 
-        <section class="products-grid" id="productsGrid">
-        </section>
+        </main>
 
-    </main>
+        <main-footer></main-footer>
+
+    </div>
 
     <script>
     const catalogData = {
@@ -451,8 +390,8 @@
       "Fried Chicken": [
         { name: "Salim Crispy Wings Fried Chicken 800g", spec: "800g x 12 pkt", pkt: "15.65", box: "187.80", img: "crispy-wings-fried-chicken.jpg" },
         { name: "Salim Crispy Drummet Fried Chicken 800g", spec: "800g x 12 pkt", pkt: "15.65", box: "187.80", img: "crispy-drummet-fried-chicken.jpg" },
-        { name: "Salim Crispy Chiki 800g", spec: "1kg x 12 pkt", pkt: "18.90", box: "226.80", img: "crispy-chiki-800g.jpg" },
-        { name: "Salim Crispy Chiki Spicy 800g", spec: "1kg x 12 pkt", pkt: "19.10", box: "229.20", img: "crispy-chiki-spicy-800g.jpg" },
+        { name: "Salim Crispy Chiki 800g", spec: "800g x 12 pkt", pkt: "18.90", box: "226.80", img: "crispy-chiki-800g.jpg" },
+        { name: "Salim Crispy Chiki Spicy 800g", spec: "800g x 12 pkt", pkt: "19.10", box: "229.20", img: "crispy-chiki-spicy-800g.jpg" },
         { name: "Salim Popcorn Fried Chicken 800g", spec: "800g x 12 pkt", pkt: "15.80", box: "189.60", img: "popcorn-fried-chicken-800g.jpg" }
       ],
       "Nugget": [
@@ -494,30 +433,34 @@
     document.addEventListener('DOMContentLoaded', () => {
         initFilterTabs();
         renderProducts();
-
         document.getElementById('searchInput').addEventListener('input', renderProducts);
     });
 
     function initFilterTabs() {
         const filterContainer = document.getElementById('categoryFilter');
+        filterContainer.innerHTML = '';
+        
+        const createBtn = (cat, label, active = false) => {
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${active ? 'active' : ''}`;
+            btn.textContent = label;
+            btn.dataset.category = cat;
+            btn.addEventListener('click', (e) => filterCategory(cat, e.currentTarget));
+            return btn;
+        };
 
-        let html = `
-            <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
-        `;
+        filterContainer.appendChild(createBtn('all', 'All', true));
 
         Object.keys(catalogData).forEach(cat => {
-            html += `
-                <button class="filter-btn" onclick="filterCategory('${cat}', this)">${cat}</button>
-            `;
+            filterContainer.appendChild(createBtn(cat, cat));
         });
-
-        filterContainer.innerHTML = html;
     }
 
     function filterCategory(category, element) {
         activeCategory = category;
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         element.classList.add('active');
+        element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         renderProducts();
     }
 
@@ -541,12 +484,13 @@
         if (items.length === 0) {
             grid.innerHTML = `
                 <div class="no-results">
-                    <i class="fa-solid fa-box-open" style="font-size: 2rem; margin-bottom: 0.5rem; color: #cbd5e1;"></i>
                     <p>Tiada produk dijumpai mengikut carian anda.</p>
                 </div>
             `;
             return;
         }
+
+        const cubeSvg = `<svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`;
 
         items.forEach(item => {
             const pktStr = item.pkt !== '-' ? `RM ${item.pkt}` : '-';
@@ -557,14 +501,13 @@
 
             card.innerHTML = `
                 <div class="product-img-box">
-                    <img src="productpic/${item.img}" alt="${item.name}">
+                    <img src="productpic/${item.img}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/200x180/f1f5f9/64748b?text=Tiada+Gambar';">
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">${item.name}</h3>
                     <div class="product-spec">
-                        <i class="fa-solid fa-cube"></i> ${item.spec}
+                        ${cubeSvg} ${item.spec}
                     </div>
-                    
                     <div class="price-grid">
                         <div class="price-item">
                             <span class="label">Paket</span>
