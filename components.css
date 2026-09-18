@@ -10,15 +10,20 @@
     /* PALET WARNA HIJAU LEMBUT (SOFT GREEN) */
     --salim-green: #74c69d;
     --salim-green-hover: #52b788;
-    --header-bg: #ba0c18;
     
-    /* TETAPAN WARNA FOOTER KELABU (GREY) */
-    --footer-bg: #2b2d30;          /* Kelabu arang (charcoal grey) */
-    --footer-text: #e0e0e0;        /* Teks kelabu terang */
-    --footer-icon-accent: #a0a6b1; /* Aksen ikon kelabu pastel */
+    /* TETAPAN WARNA HEADER PUTIH */
+    --header-bg: #ffffff;             /* Latar belakang header diubah ke putih */
+    --header-text: #1e293b;           /* Warna teks gelap supaya jelas dibaca */
+    --header-text-hover: #ba0c18;     /* Warna teks merah apabila di-hover */
+    
+    /* TETAPAN WARNA FOOTER PUTIH */
+    --footer-bg: #ffffff;             /* Latar belakang footer diubah ke putih */
+    --footer-text: #475569;           /* Teks kelabu gelap supaya jelas dibaca */
+    --footer-title: #0f172a;          /* Tajuk & nama syarikat warna gelap */
+    --footer-icon-accent: #64748b;    /* Aksen ikon kelabu */
     
     --text-white: #ffffff;
-    --border-light: rgba(255, 255, 255, 0.2);
+    --border-light: #e2e8f0;        /* Garisan pemisah warna terang/kelabu halus */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -34,7 +39,7 @@ main-footer * {
 main-header {
     display: block;
     width: 100%;
-    position: sticky; /* Sticky dikemaskini supaya melekat di atas */
+    position: sticky; /* Sticky supaya kekal melekat di atas */
     top: 0;
     z-index: 1000;
 }
@@ -51,9 +56,10 @@ main-footer {
 .site-header {
     background-color: var(--header-bg);
     width: 100%;
-    box-shadow: 0 4px 20px rgba(186, 12, 24, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Bayangan lembut untuk header putih */
     transition: var(--transition-smooth);
     overflow-x: hidden;
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .header-container {
@@ -83,7 +89,7 @@ main-footer {
     height: 42px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
     transition: transform 0.3s ease;
 }
 
@@ -108,7 +114,7 @@ main-footer {
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--header-text);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.98rem;
@@ -118,7 +124,7 @@ main-footer {
 }
 
 .nav-link:hover {
-    color: var(--text-white);
+    color: var(--header-text-hover);
 }
 
 .nav-link::after {
@@ -128,7 +134,7 @@ main-footer {
     left: 0;
     width: 0%;
     height: 3px;
-    background-color: var(--salim-green);
+    background-color: var(--salim-red);
     border-radius: 4px;
     transition: var(--transition-smooth);
 }
@@ -139,7 +145,7 @@ main-footer {
 }
 
 .nav-link.active {
-    color: var(--text-white);
+    color: var(--salim-red);
     font-weight: 700;
 }
 
@@ -160,7 +166,7 @@ main-footer {
 .menu-toggle span {
     width: 100%;
     height: 3px;
-    background-color: var(--text-white);
+    background-color: var(--header-text); /* Warna garis menu bertukar gelap */
     border-radius: 3px;
     transition: var(--transition-smooth);
     transform-origin: left center;
@@ -179,7 +185,7 @@ main-footer {
 }
 
 /* ==========================================
-   2. SITE FOOTER (GREY THEME)
+   2. SITE FOOTER (WHITE THEME)
    ========================================== */
 .site-footer {
     background-color: var(--footer-bg);
@@ -187,6 +193,7 @@ main-footer {
     padding: 4.5rem 0 2rem 0;
     margin-top: 4rem;
     border-top: 4px solid var(--salim-red);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03); /* Bayangan halus di atas footer */
     overflow-x: hidden;
 }
 
@@ -215,11 +222,11 @@ main-footer {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: rgba(255, 255, 255, 0.06);
+    background: #f8fafc;
     padding: 12px 18px;
     border-radius: 12px;
     width: fit-content;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid #e2e8f0;
 }
 
 .footer-logo-img {
@@ -232,7 +239,7 @@ main-footer {
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #ffffff;
+    color: var(--footer-title);
 }
 
 /* Footer Info Column (Address & Contact) */
@@ -281,7 +288,7 @@ main-footer {
 }
 
 .contact-item:hover {
-    color: #ffffff;
+    color: var(--salim-red);
     transform: translateX(4px);
 }
 
@@ -295,7 +302,7 @@ main-footer {
 .social-title {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--footer-title);
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }
@@ -309,20 +316,20 @@ main-footer {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    background: #f1f5f9;
+    color: #334155;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
     text-decoration: none;
     transition: var(--transition-smooth);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid #cbd5e1;
 }
 
 .social-btn:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .social-btn.facebook:hover {
@@ -333,8 +340,8 @@ main-footer {
 
 .social-btn.tiktok:hover {
     background-color: #000000;
-    border-color: #fe2c55;
-    color: #fe2c55;
+    border-color: #000000;
+    color: #ffffff;
 }
 
 .social-btn.whatsapp:hover {
@@ -346,13 +353,13 @@ main-footer {
 /* Footer Bottom Divider & Copyright */
 .footer-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
     margin-bottom: 1.8rem;
 }
 
 .footer-bottom {
     text-align: center;
-    color: rgba(255, 255, 255, 0.65);
+    color: #64748b;
     font-size: 0.88rem;
 }
 
@@ -376,7 +383,7 @@ main-footer {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #960812;
+        background-color: #ffffff; /* Menu dropdown telefon juga berwarna putih */
         flex-direction: column;
         align-items: center;
         padding: 0;
@@ -385,8 +392,9 @@ main-footer {
         overflow: hidden;
         opacity: 0;
         visibility: hidden;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         transition: var(--transition-smooth);
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .nav-menu.active {
@@ -417,4 +425,3 @@ main-footer {
         height: 20px;
     }
 }
-
