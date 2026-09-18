@@ -19,11 +19,14 @@
             --salim-red: #ba0c18;
             --salim-red-hover: #960812;
             --salim-green: #008d4c;
-            --bg-body: #f8fafc;
+            
+            /* SOFT CREAM THEME (SAMA SEBIJIK SEPERTI INDEX & ABOUT US) */
+            --bg-body: #fdfbf7;
             --card-bg: #ffffff;
-            --text-main: #0f172a;
+            --text-main: #1e293b;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
+            --border-color: #eee7de;
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         *, *::before, *::after {
@@ -34,6 +37,7 @@
 
         html, body {
             width: 100%;
+            height: 100%;
             max-width: 100%;
             overflow-x: clip;
             position: relative;
@@ -54,6 +58,9 @@
         .site-wrapper {
             width: 100%;
             max-width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: clip;
             position: relative;
         }
@@ -61,14 +68,23 @@
         main-header {
             display: block;
             width: 100%;
-            position: sticky;
-            top: 0;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000;
+        }
+
+        main-header header, 
+        main-header nav, 
+        main-header .navbar, 
+        main-header .header-container {
+            position: sticky !important;
+            top: 0 !important;
             z-index: 1000;
         }
 
         /* Marquee Banner Styling */
         .marquee-banner {
-            background-color: #1e293b; /* Distinct dark navy background */
+            background-color: #1e293b;
             color: #f8fafc;
             padding: 8px 0;
             font-size: 0.85rem;
@@ -89,6 +105,10 @@
             width: 100%;
             position: relative;
             z-index: 10;
+        }
+
+        main.container {
+            flex: 1;
         }
 
         .container {
@@ -127,7 +147,7 @@
             font-size: 0.95rem;
             outline: none;
             background: #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             transition: all 0.2s;
         }
 
@@ -201,16 +221,18 @@
         .product-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
         .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+            border-color: #dfd7cc;
         }
 
         .product-img-box {
@@ -221,7 +243,7 @@
             align-items: center;
             justify-content: center;
             padding: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .product-img-box img {
@@ -268,10 +290,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px;
-            background: #f8fafc;
-            border: 1px solid #edf2f7;
+            background: #f8f4ed;
+            border: 1px solid var(--border-color);
             padding: 8px;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-top: auto;
         }
 
@@ -304,6 +326,54 @@
             color: var(--text-muted);
         }
 
+        /* WHATSAPP FLOATING BUTTON (SEBIJIK SAMA INDEX & ABOUT US) */
+        .whatsapp-inquiry-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-inquiry-fixed i {
+            font-size: 2rem;
+        }
+
+        .whatsapp-inquiry-fixed:hover {
+            transform: scale(1.1);
+            background-color: #1da851;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            color: white;
+        }
+
+        .ws-badge {
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+            background: var(--salim-red);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
         @media (max-width: 600px) {
             .category-filter {
                 margin: 0;
@@ -312,6 +382,17 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.8rem;
+            }
+
+            .whatsapp-inquiry-fixed {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .whatsapp-inquiry-fixed i {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -353,6 +434,12 @@
         <main-footer></main-footer>
 
     </div>
+
+    <!-- BUTANG WHATSAPP TERAPUNG BULAT (SEBIJIK SAMA INDEX & ABOUT US) -->
+    <a href="https://wa.me/60124247708?text=Hi%20Salim%20Melawati%20Kebab,%20saya%20berminat%20untuk%20bertanya%20tentang%20produk." class="whatsapp-inquiry-fixed" target="_blank" rel="noopener noreferrer" aria-label="Need Help? Contact WhatsApp">
+        <span class="ws-badge">Need Help?</span>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 <script>
     const catalogData = {
@@ -401,19 +488,19 @@
         { name: "Salim Minced Meat 400g", spec: "400g x 24 pkt", pkt: "9.15", box: "219.60", img: "minced-meat-1000.jpg" }
       ],
 
-"Kebab": [
-  { name: "Kebab Ayam 1kg", spec: "1kg x 20 pkt", pkt: "21.50", box: "430.00", img: "kebab-ayam-1kg.jpg" },
-  { name: "Kebab Daging 1kg", spec: "1kg x 20 pkt", pkt: "20.20", box: "404.00", img: "kebab-daging-1kg.jpg" },
-  { name: "Kebab Kambing 1kg", spec: "1kg x 20 pkt", pkt: "31.60", box: "632.00", img: "kebab-kambing-1kg.jpg" },
-  { name: "Kebab Ayam Tiang 3kg", spec: "3kg x 6 tiang", pkt: "64.50", box: "387.00", img: "kebab-ayam-tiang.jpg" },
-  { name: "Kebab Daging Tiang 3kg", spec: "3kg x 6 tiang", pkt: "60.50", box: "363.00", img: "kebab-daging-tiang.jpg" },
-  { name: "Kebab Kambing Tiang 3kg", spec: "3kg x 6 tiang", pkt: "94.80", box: "568.80", img: "kebab-daging-tiang.jpg" },
-  { name: "Kebab Ayam Tiang 5kg", spec: "5kg x 4 tiang", pkt: "107.50", box: "430.00", img: "kebab-ayam-tiang.jpg" },
-  { name: "Kebab Daging Tiang 5kg", spec: "5kg x 4 tiang", pkt: "100.00", box: "400.00", img: "kebab-daging-tiang.jpg" },
-  { name: "Kebab Kambing Tiang 5kg", spec: "5kg x 4 tiang", pkt: "157.90", box: "631.60", img: "kebab-daging-tiang.jpg" },
-  { name: "Kebab Ayam Tiang 8kg", spec: "8kg x 1 tiang", pkt: "172.00", box: "172.00", img: "kebab-ayam-tiang.jpg" },
-  { name: "Kebab Ayam Tiang 10kg", spec: "10kg x 1 tiang", pkt: "215.00", box: "215.00", img: "kebab-ayam-tiang.jpg" }
-],
+      "Kebab": [
+        { name: "Kebab Ayam 1kg", spec: "1kg x 20 pkt", pkt: "21.50", box: "430.00", img: "kebab-ayam-1kg.jpg" },
+        { name: "Kebab Daging 1kg", spec: "1kg x 20 pkt", pkt: "20.20", box: "404.00", img: "kebab-daging-1kg.jpg" },
+        { name: "Kebab Kambing 1kg", spec: "1kg x 20 pkt", pkt: "31.60", box: "632.00", img: "kebab-kambing-1kg.jpg" },
+        { name: "Kebab Ayam Tiang 3kg", spec: "3kg x 6 tiang", pkt: "64.50", box: "387.00", img: "kebab-ayam-tiang.jpg" },
+        { name: "Kebab Daging Tiang 3kg", spec: "3kg x 6 tiang", pkt: "60.50", box: "363.00", img: "kebab-daging-tiang.jpg" },
+        { name: "Kebab Kambing Tiang 3kg", spec: "3kg x 6 tiang", pkt: "94.80", box: "568.80", img: "kebab-daging-tiang.jpg" },
+        { name: "Kebab Ayam Tiang 5kg", spec: "5kg x 4 tiang", pkt: "107.50", box: "430.00", img: "kebab-ayam-tiang.jpg" },
+        { name: "Kebab Daging Tiang 5kg", spec: "5kg x 4 tiang", pkt: "100.00", box: "400.00", img: "kebab-daging-tiang.jpg" },
+        { name: "Kebab Kambing Tiang 5kg", spec: "5kg x 4 tiang", pkt: "157.90", box: "631.60", img: "kebab-daging-tiang.jpg" },
+        { name: "Kebab Ayam Tiang 8kg", spec: "8kg x 1 tiang", pkt: "172.00", box: "172.00", img: "kebab-ayam-tiang.jpg" },
+        { name: "Kebab Ayam Tiang 10kg", spec: "10kg x 1 tiang", pkt: "215.00", box: "215.00", img: "kebab-ayam-tiang.jpg" }
+      ],
 
       "Fried Chicken": [
         { name: "Salim Crispy Wings Fried Chicken 800g", spec: "800g x 12 pkt", pkt: "15.65", box: "187.80", img: "crispy-wings-fried-chicken.jpg" },
@@ -530,7 +617,7 @@
 
             card.innerHTML = `
                 <div class="product-img-box">
-                    <img src="productpic/${item.img}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/200x180/f1f5f9/64748b?text=No+Image';">
+                    <img src="productpic/${item.img}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/200x180/f8f4ed/64748b?text=No+Image';">
                 </div>
                 <div class="product-content">
                     <h3 class="product-title">${item.name}</h3>
@@ -552,6 +639,6 @@
             grid.appendChild(card);
         });
     }
-    </script>
+</script>
 </body>
 </html>
