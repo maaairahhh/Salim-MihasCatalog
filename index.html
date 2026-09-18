@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salim Melawati Kebab | Brand Makanan Sejuk Beku Dipercayai</title>
-    <meta name="description" content="Salim Melawati Kebab membekalkan produk makanan sejuk beku premium, halal dan berkualiti tinggi untuk isi rumah dan perniagaan di Malaysia.">
+    <title>Salim Melawati Kebab | Trusted Frozen Food Brand - MIHAS Showcase (Level 1, Booth 3A06)</title>
+    <meta name="description" content="Visit Salim Melawati Kebab at MIHAS (Level 1, Booth 3A06). Supplying premium, halal, and high-quality frozen food products.">
 
     <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
     
-    <!-- CSS Header & Footer Komponen -->
+    <!-- Header & Footer Component CSS -->
     <link rel="stylesheet" href="components.css">
 
-    <!-- JavaScript Header & Footer Komponen -->
+    <!-- Header & Footer Component JavaScript -->
     <script src="components.js" defer></script>
     
     <style>
@@ -24,11 +24,15 @@
             --salim-red-hover: #960812;
             --salim-green: #008d4c;
             --salim-green-hover: #006e3b;
-            --bg-light: #f8fafc;
-            --bg-card: #ffffff;
-            --text-dark: #0f172a;
+            --salim-gold: #c59b27;
+            
+            /* ULTRA-LIGHT CREAM THEME */
+            --bg-light: #fdfbf7;
+            --bg-card: #ffffff;             
+            --bg-cream-card: #f8f4ed;       
+            --text-dark: #1e293b;
             --text-gray: #475569;
-            --border-color: #e2e8f0;
+            --border-color: #eee7de;        
             --transition: all 0.3s ease;
         }
 
@@ -40,6 +44,7 @@
 
         html, body {
             width: 100%;
+            height: 100%;
             max-width: 100%;
             overflow-x: clip; 
             position: relative;
@@ -50,11 +55,16 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            /* DIBETULKAN: padding-bottom dibuang supaya tiada jurang kosong di bawah footer */
         }
 
+        /* DIBETULKAN: Flexbox sticky footer dikemaskini */
         .site-wrapper {
             width: 100%;
             max-width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: clip;
             position: relative;
         }
@@ -68,15 +78,150 @@
             width: 100%;
         }
 
+        /* DIBETULKAN: flex: 1 menolak footer ke dasar paparan */
+        main.container {
+            flex: 1;
+        }
+
         .container {
             width: 92%;
             max-width: 1250px;
             margin: 0 auto;
         }
 
-        /* 1. Hero Section */
+        /* 1. MIHAS SECTION */
+        .mihas-section-clean {
+            padding: 3rem 0 2rem 0;
+        }
+
+        .mihas-branding-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .mihas-official-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .mihas-divider {
+            height: 45px;
+            width: 1px;
+            background: var(--border-color);
+        }
+
+        .mihas-header {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .mihas-header-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--salim-gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .mihas-header h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .mihas-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .booth-location-card {
+            background: #ffffff;
+            border: 1.5px dashed var(--salim-gold);
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.08);
+        }
+
+        .booth-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .booth-item.level-emphasis {
+            font-size: 1.25rem;
+            color: var(--salim-green);
+            font-weight: 800;
+        }
+
+        .booth-item i {
+            color: var(--salim-red);
+            font-size: 1.1rem;
+        }
+        
+        .booth-item.level-emphasis i {
+            font-size: 1.35rem;
+            color: var(--salim-green);
+        }
+
+        .booth-separator {
+            color: var(--salim-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .mihas-photos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .mihas-photo-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            height: 250px;
+            background-color: #f2ede4;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .mihas-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .mihas-photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 2. HERO SECTION */
         .hero {
-            padding: 4rem 0 3rem 0;
+            padding: 3rem 0 2.5rem 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
         }
 
         .hero-grid {
@@ -92,7 +237,7 @@
             font-weight: 800;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
 
@@ -129,13 +274,13 @@
             align-items: center;
             gap: 10px;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.3);
+            box-shadow: 0 4px 15px rgba(186, 12, 24, 0.25);
         }
 
         .btn-hero-red:hover {
             background: var(--salim-red-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(186, 12, 24, 0.4);
+            box-shadow: 0 6px 20px rgba(186, 12, 24, 0.35);
         }
 
         .hero-image-container {
@@ -147,10 +292,10 @@
             width: 100%;
             height: auto;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
             display: block;
             object-fit: cover;
-            background-color: #e2e8f0;
+            background-color: #f2ede4;
             min-height: 280px;
         }
 
@@ -167,11 +312,11 @@
             transform: rotate(3deg);
             text-align: right;
             line-height: 1.1;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             z-index: 10;
         }
 
-        /* 2. Rebranding Showcase Section */
+        /* 3. REBRANDING SHOWCASE */
         .rebranding-section {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -179,7 +324,7 @@
             padding: 2.5rem 1.5rem;
             margin: 2.5rem 0;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
         }
 
         .rebranding-title {
@@ -227,7 +372,7 @@
             font-size: 1.8rem;
         }
 
-        /* 3. Interactive Action Boxes */
+        /* 4. ACTION BOXES */
         .action-boxes {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -286,7 +431,7 @@
             color: #ffffff;
         }
 
-        /* 4. Why Us Section */
+        /* 5. WHY US SECTION */
         .why-us-section {
             padding: 3rem 0 5rem 0;
         }
@@ -333,7 +478,7 @@
             justify-content: center;
             font-size: 1.2rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(186, 12, 24, 0.3);
+            box-shadow: 0 4px 12px rgba(186, 12, 24, 0.25);
         }
 
         .why-us-content h4 {
@@ -349,7 +494,55 @@
             line-height: 1.55;
         }
 
-        /* Mobile Responsive */
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-inquiry-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-inquiry-fixed i {
+            font-size: 2rem;
+        }
+
+        .whatsapp-inquiry-fixed:hover {
+            transform: scale(1.1);
+            background-color: #1da851;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            color: white;
+        }
+
+        .ws-badge {
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+            background: var(--salim-red);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        /* RESPONSIVE DESIGN */
         @media (max-width: 992px) {
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -363,12 +556,26 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            .mihas-photos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .mihas-photo-card {
+                height: 220px;
+            }
             .action-boxes, .why-us-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
+            .mihas-official-logo {
+                height: 50px;
+            }
+            .mihas-divider {
+                height: 35px;
+            }
+
             .hero {
                 padding: 2.5rem 0 2rem 0;
             }
@@ -381,6 +588,20 @@
                 right: 10px;
                 padding: 4px 10px;
             }
+            .mihas-header h2 {
+                font-size: 1.7rem;
+            }
+            .booth-location-card {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 1rem;
+                border-radius: 20px;
+                width: 100%;
+            }
+            .booth-separator {
+                display: none;
+            }
+
             .rebranding-comparison {
                 flex-direction: column;
                 gap: 1.2rem;
@@ -399,9 +620,22 @@
                 font-size: 2rem;
                 margin-bottom: 2.2rem;
             }
+
+            .whatsapp-inquiry-fixed {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+            .whatsapp-inquiry-fixed i {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 480px) {
+            .mihas-official-logo {
+                height: 45px;
+            }
             .hero-text h1 {
                 font-size: 1.8rem;
             }
@@ -420,7 +654,46 @@
 
         <main class="container">
 
-            <!-- Hero Section -->
+            <!-- 1. MIHAS SHOWCASE SECTION -->
+            <section class="mihas-section-clean">
+                <div class="mihas-branding-bar">
+                    <img src="productpic/mihas.png" alt="MIHAS Official Logo" class="mihas-official-logo" onerror="this.style.display='none'">
+                    <div class="mihas-divider"></div>
+                    <img src="productpic/SALIM.png" alt="Salim Logo" class="mihas-official-logo">
+                </div>
+
+                <div class="mihas-header">
+                    <div class="mihas-header-tag">
+                        <i class="fa-solid fa-award"></i> Malaysia International Halal Showcase
+                    </div>
+                    <h2>Visit Salim @ MIHAS Showcase!</h2>
+                    <p>Discover our wide range of premium Halal frozen food products and explore direct business partnership opportunities with the Salim Melawati Kebab team.</p>
+                    
+                    <div class="booth-location-card">
+                        <div class="booth-item level-emphasis">
+                            <i class="fa-solid fa-layer-group"></i> Level 1
+                        </div>
+                        <span class="booth-separator">•</span>
+                        <div class="booth-item">
+                            <i class="fa-solid fa-store"></i> Booth 3A06
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mihas-photos-grid">
+                    <div class="mihas-photo-card">
+                        <img src="productpic/mihas-lastyear-1.png" alt="MIHAS Highlights 1" loading="lazy">
+                    </div>
+                    <div class="mihas-photo-card">
+                        <img src="productpic/mihas-lastyear-2.png" alt="MIHAS Highlights 2" loading="lazy">
+                    </div>
+                    <div class="mihas-photo-card">
+                        <img src="productpic/mihas-lastyear-3.png" alt="MIHAS Highlights 3" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. HERO SECTION -->
             <section class="hero">
                 <div class="hero-grid">
                     <div class="hero-text">
@@ -431,13 +704,13 @@
                     </div>
 
                     <div class="hero-image-container">
-                        <span class="hero-script-badge">Pilihan Terbaik Anda</span>
-                        <img src="hero-image.png" alt="Salim Products Showcase" class="hero-image-bg" loading="eager" decoding="async">
+                        <span class="hero-script-badge">Your Best Choice</span>
+                        <img src="productpic/produk.jpg" alt="Salim Products Showcase" class="hero-image-bg" loading="eager" decoding="async">
                     </div>
                 </div>
             </section>
 
-            <!-- Rebranding Section -->
+            <!-- 3. REBRANDING SECTION -->
             <section class="rebranding-section">
                 <h2 class="rebranding-title">Rebranding Identification</h2>
                 <div class="rebranding-comparison">
@@ -455,7 +728,7 @@
                 </div>
             </section>
 
-            <!-- Interactive Action Cards -->
+            <!-- 4. ACTION CARDS -->
             <section class="action-boxes">
                 <a href="produk.html" class="action-card">
                     <div>
@@ -474,55 +747,55 @@
                 </a>
             </section>
 
-            <!-- Why Us Section -->
+            <!-- 5. WHY US SECTION -->
             <section class="why-us-section">
                 <h2 class="why-us-title">Why us?</h2>
                 <div class="why-us-grid">
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-thumbs-up"></i></div>
                         <div class="why-us-content">
-                            <h4>Fine Taste & High Quality</h4>
-                            <p>Products produced with selective quality ingredients.</p>
+                            <h4>Great Taste & Premium Quality</h4>
+                            <p>Our products are made with carefully selected, high-quality ingredients to deliver consistent taste and quality in every serving.</p>
                         </div>
                     </div>
 
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-tags"></i></div>
                         <div class="why-us-content">
-                            <h4>Affordable Price</h4>
-                            <p>Need not to worry. We provide best price and value for all of our customer.</p>
+                            <h4>Wide Variety of Choices</h4>
+                            <p>We offer a diverse range of products, flavours and pack sizes to suit different preferences, business needs and occasions.</p>
                         </div>
                     </div>
 
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="why-us-content">
-                            <h4>Varieties of Choices</h4>
-                            <p>Each product has its own flavour and varieties of sizes. Suit your demand and needs.</p>
+                            <h4>Convenient & Easy to Prepare</h4>
+                            <p>Our products are designed for convenient preparation, helping you save time while enjoying delicious meals with ease.</p>
                         </div>
                     </div>
 
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-award"></i></div>
                         <div class="why-us-content">
-                            <h4>Halalan Toyyiba</h4>
-                            <p>We are certified Halal by Jabatan Kemajuan Islam Malaysia (JAKIM).</p>
+                            <h4>Competitive & Affordable Pricing</h4>
+                            <p>We are committed to offering quality products at competitive prices, providing excellent value for our customers.</p>
                         </div>
                     </div>
 
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-utensils"></i></div>
                         <div class="why-us-content">
-                            <h4>Ready to Cook and Simple Preparation</h4>
-                            <p>We understand our customer. We make our products easy to prepared to suite your busy lifestyle and work. Easy and yummy!</p>
+                            <h4>Halalan Toyyiban</h4>
+                            <p>Our products are Halal-certified by the Department of Islamic Development Malaysia (JAKIM), reflecting our commitment to quality, safety and compliance.</p>
                         </div>
                     </div>
 
                     <div class="why-us-item">
                         <div class="why-us-icon"><i class="fa-solid fa-users"></i></div>
                         <div class="why-us-content">
-                            <h4>Customer First</h4>
-                            <p>Customer is our priority. We always hear you to improve our quality and services.</p>
+                            <h4>Customer-Focused</h4>
+                            <p>Our customers are at the heart of everything we do. We value your feedback and continuously strive to improve our products and services.</p>
                         </div>
                     </div>
                 </div>
@@ -533,6 +806,12 @@
         <main-footer></main-footer>
 
     </div>
+
+    <!-- BUTANG WHATSAPP TERAPUNG BULAT (DENGAN NOMBOR: 60124247708) -->
+    <a href="https://wa.me/60124247708?text=Hi%20Salim%20Melawati%20Kebab,%20saya%20berminat%20untuk%20bertanya%20tentang%20produk." class="whatsapp-inquiry-fixed" target="_blank" rel="noopener noreferrer" aria-label="Need Help? Contact WhatsApp">
+        <span class="ws-badge">Need Help?</span>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
