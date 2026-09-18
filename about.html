@@ -21,8 +21,8 @@
     <style>
         :root {
             --salim-red: #ba0c18;
+            --salim-red-hover: #960913;
             --salim-green: #008d4c;
-            --salim-green-dark: #073b1e;
             --bg-light: #f8fafc;
             --bg-card: #ffffff;
             --text-dark: #0f172a;
@@ -59,22 +59,14 @@
             z-index: 1;
         }
 
-        /* HEADER MELEKAT DI ATAS SKRIN (STICKY / FIXED AT TOP) */
+        /* HEADER & MOBILE MENU STYLING */
         main-header {
             display: block;
             width: 100%;
             position: sticky !important;
             top: 0 !important;
-            z-index: 1000;
-        }
-
-        main-header header, 
-        main-header nav, 
-        main-header .navbar, 
-        main-header .header-container {
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000;
+            z-index: 9999 !important;
+            overflow: visible !important;
         }
 
         main-footer {
@@ -130,15 +122,14 @@
             align-items: stretch;
         }
 
-        /* Green Box 'How We Started' */
-        .story-green-card {
-            background: linear-gradient(145deg, #06381d 0%, #0a4f2b 100%);
+        /* White Story Card */
+        .story-card {
+            background: #ffffff;
             border-radius: 28px;
             padding: 3.5rem 3rem;
-            color: #ffffff;
-            box-shadow: 0 20px 40px rgba(7, 59, 30, 0.22), 
-                        0 0 25px rgba(0, 141, 76, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -146,7 +137,7 @@
             justify-content: center;
         }
 
-        .story-green-card::before {
+        .story-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -156,32 +147,32 @@
             background: linear-gradient(180deg, var(--salim-red) 0%, #e11d48 100%);
         }
 
-        .story-green-card h3 {
+        .story-card h3 {
             font-size: clamp(1.8rem, 3.5vw, 2.3rem);
             font-weight: 800;
-            color: #ffffff;
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
             letter-spacing: -0.5px;
         }
 
-        .story-green-card p {
-            color: #e2e8f0;
+        .story-card p {
+            color: var(--text-gray);
             font-size: 1.05rem;
             line-height: 1.8;
             margin-bottom: 1.2rem;
             font-weight: 400;
         }
 
-        .story-green-card p:last-child {
+        .story-card p:last-child {
             margin-bottom: 0;
         }
 
-        .story-green-card strong {
-            color: #4ade80;
+        .story-card strong {
+            color: var(--salim-red);
             font-weight: 700;
         }
 
-        /* Gambar Founders */
+        /* Responsive Founders Image */
         .story-image-wrapper {
             position: relative;
             width: 100%;
@@ -191,19 +182,16 @@
             align-items: center;
             justify-content: center;
             background: transparent;
-            padding: 0;
-            border: none;
-            box-shadow: none;
         }
 
         .story-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* Memastikan bahagian atas/muka sentiasa keutamaan */
+            object-position: center top;
             border-radius: 28px;
             display: block;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         /* 3. Brands Section */
@@ -252,9 +240,8 @@
 
         .brand-card:hover {
             transform: translateY(-6px);
-            border-color: var(--salim-green);
-            box-shadow: 0 18px 36px rgba(0, 141, 76, 0.12),
-                        0 6px 16px rgba(186, 12, 24, 0.08);
+            border-color: var(--salim-red);
+            box-shadow: 0 18px 36px rgba(186, 12, 24, 0.12);
         }
 
         .brand-card img {
@@ -271,7 +258,7 @@
             transform: scale(1.05);
         }
 
-        /* Responsif Mobile - Dibetulkan supaya gambar penuh & tidak terpotong */
+        /* Responsive Mobile Adjustments */
         @media (max-width: 992px) {
             .story-grid {
                 grid-template-columns: 1fr;
@@ -284,7 +271,7 @@
             .story-image {
                 height: auto;
                 max-height: 480px;
-                object-fit: contain; /* Gambar dipaparkan penuh tanpa potong */
+                object-fit: contain;
             }
             .brands-grid {
                 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -296,7 +283,7 @@
             .page-header {
                 padding: 3rem 0 1.5rem 0;
             }
-            .story-green-card {
+            .story-card {
                 padding: 2.2rem 1.5rem;
                 border-radius: 20px;
             }
@@ -308,7 +295,7 @@
                 height: auto;
                 width: 100%;
                 border-radius: 20px;
-                object-fit: contain; /* Memastikan seluruh gambar & muka nampak penuh */
+                object-fit: contain;
             }
             .brands-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -346,7 +333,7 @@
             <section class="story-section">
                 <div class="story-grid">
                     
-                    <div class="story-green-card">
+                    <div class="story-card">
                         <h3>How We Started</h3>
                         <p>Established in 1996, <strong>Melawati Kebab Sdn. Bhd.</strong> began its journey in the frozen food industry, specializing in premium chicken and meat-based products.</p>
                         <p>Co-founded by <strong>Mr. Mohd Shafiee bin Salim</strong> and <strong>Mrs. Zawiyah binti Basiran</strong>, the enterprise originated as a modest street vendor before expanding into a modern manufacturing facility.</p>
@@ -395,6 +382,31 @@
         <main-footer></main-footer>
 
     </div>
+
+    <!-- Script for mobile menu interaction -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const initMobileMenu = () => {
+                const header = document.querySelector('main-header');
+                if (!header) return;
+
+                const root = header.shadowRoot || header;
+                const toggleBtn = root.querySelector('.hamburger, .hamburger-toggle, .nav-toggle, button');
+                const navMenu = root.querySelector('.nav-menu, nav, .navbar-collapse');
+
+                if (toggleBtn && navMenu) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        navMenu.classList.toggle('active');
+                        toggleBtn.classList.toggle('active');
+                    });
+                }
+            };
+
+            initMobileMenu();
+            setTimeout(initMobileMenu, 300);
+        });
+    </script>
 
 </body>
 </html>
