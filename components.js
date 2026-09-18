@@ -59,6 +59,7 @@ class MainFooter extends HTMLElement {
                             <img src="productpic/mksb.png" alt="Melawati Kebab Logo" class="footer-logo-img">
                         </div>
                         <div class="company-name">Melawati Kebab Sdn Bhd</div>
+                        <div class="company-ssm">(778900-M)</div>
                     </div>
 
                     <div class="footer-info">
