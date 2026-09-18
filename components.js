@@ -1,5 +1,5 @@
 // ==========================================
-// 1. KOMPONEN HEADER (<main-header></main-header>)
+// 1. HEADER COMPONENT (<main-header></main-header>)
 // ==========================================
 class MainHeader extends HTMLElement {
     connectedCallback() {
@@ -15,7 +15,7 @@ class MainHeader extends HTMLElement {
                     <img src="productpic/mksb.png" alt="Melawati Kebab Logo" class="logo-img">
                 </a>
 
-                <button class="menu-toggle" aria-label="Buka Menu">
+                <button class="menu-toggle" aria-label="Open Menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -23,6 +23,7 @@ class MainHeader extends HTMLElement {
 
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link ${currentPath === 'index.html' ? 'active' : ''}">Home</a></li>
+                    <li><a href="about.html" class="nav-link ${currentPath === 'about.html' ? 'active' : ''}">About Us</a></li>
                     <li><a href="produk.html" class="nav-link ${currentPath === 'produk.html' ? 'active' : ''}">Products</a></li>
                     <li><a href="distributor.html" class="nav-link ${currentPath === 'distributor.html' ? 'active' : ''}">Distributor</a></li>
                     <li><a href="contact.html" class="nav-link ${currentPath === 'contact.html' ? 'active' : ''}">Contact Us</a></li>
@@ -44,7 +45,7 @@ class MainHeader extends HTMLElement {
 }
 
 // ==========================================
-// 2. KOMPONEN FOOTER (<main-footer></main-footer>)
+// 2. FOOTER COMPONENT (<main-footer></main-footer>)
 // ==========================================
 class MainFooter extends HTMLElement {
     connectedCallback() {
@@ -66,13 +67,13 @@ class MainFooter extends HTMLElement {
                             <span>No 54-1F, Jalan 2/154D, Taman Desa Cheras, 56000 Kuala Lumpur, Malaysia</span>
                         </div>
                         <div class="footer-contacts">
-                            <a href="tel:+60391018951" class="contact-item"><i class="fa-solid fa-phone"></i> 03-9101 8951</a>
+                            <a href="tel:+603 9107 9708" class="contact-item"><i class="fa-solid fa-phone"></i> +603 9107 9708</a>
                             <a href="mailto:melawatikebab1996@gmail.com" class="contact-item"><i class="fa-solid fa-envelope"></i> melawatikebab1996@gmail.com</a>
                         </div>
                     </div>
 
                     <div class="footer-social-wrapper">
-                        <div class="social-title">Ikuti Kami</div>
+                        <div class="social-title">Follow Us</div>
                         <div class="footer-socials">
                             <a href="https://www.facebook.com/MelawatiKebabSince1996/" target="_blank" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="https://www.tiktok.com/@melawatikebabsince1996" target="_blank" class="social-btn tiktok"><i class="fa-brands fa-tiktok"></i></a>
@@ -92,7 +93,7 @@ class MainFooter extends HTMLElement {
     }
 }
 
-// Mendaftarkan tag custom HTML
+// Register Custom HTML Tags
 if (!customElements.get('main-header')) {
     customElements.define('main-header', MainHeader);
 }
