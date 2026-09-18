@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Salim Melawati Kebab</title>
+    <meta name="description" content="Learn about the journey and brands under Melawati Kebab Sdn Bhd, a trusted frozen food manufacturer in Malaysia since 1996.">
+
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Header & Footer Components -->
+    <link rel="stylesheet" href="components.css">
+
+    <!-- JavaScript Header & Footer Components -->
+    <script src="components.js" defer></script>
+    
+    <style>
+        :root {
+            --salim-red: #ba0c18;
+            --salim-green: #008d4c;
+            --salim-green-dark: #073b1e;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: #e2e8f0;
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip; 
+            position: relative;
+            background-color: var(--bg-light);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .site-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER MELEKAT DI ATAS SKRIN (STICKY / FIXED AT TOP) */
+        main-header {
+            display: block;
+            width: 100%;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000;
+        }
+
+        /* Mengatasi sebarang gaya dalaman komponen header */
+        main-header header, 
+        main-header nav, 
+        main-header .navbar, 
+        main-header .header-container {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000;
+        }
+
+        main-footer {
+            display: block;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 1. Header Hero Minimalis */
+        .page-header {
+            text-align: center;
+            padding: 4.5rem 0 2.5rem 0;
+        }
+
+        .page-title {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title span {
+            color: var(--salim-red);
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 500;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* 2. Story Section */
+        .story-section {
+            padding: 1.5rem 0 5rem 0;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3.5rem;
+            align-items: stretch;
+        }
+
+        /* Green Box 'How We Started' */
+        .story-green-card {
+            background: linear-gradient(145deg, #06381d 0%, #0a4f2b 100%);
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(7, 59, 30, 0.22), 
+                        0 0 25px rgba(0, 141, 76, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-green-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--salim-red) 0%, #e11d48 100%);
+        }
+
+        .story-green-card h3 {
+            font-size: clamp(1.8rem, 3.5vw, 2.3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .story-green-card p {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        .story-green-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-green-card strong {
+            color: #4ade80;
+            font-weight: 700;
+        }
+
+        /* Gambar Founders (Covered, Full Fill, No Border Tepi) */
+        .story-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* 3. Brands Section (Statik & Fail JPG) */
+        .brands-section {
+            padding: 2rem 0 6rem 0;
+            position: relative;
+        }
+
+        .brands-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .brands-title {
+            font-size: clamp(2rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .brands-subtitle {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            margin-top: 0.4rem;
+        }
+
+        /* Grid Logo Statik & Responsif */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .brand-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            height: 155px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--salim-green);
+            box-shadow: 0 18px 36px rgba(0, 141, 76, 0.12),
+                        0 6px 16px rgba(186, 12, 24, 0.08);
+        }
+
+        /* Saiz Logo Besar & Jelas */
+        .brand-card img {
+            max-width: 90%;
+            max-height: 95px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.03));
+            transition: var(--transition);
+        }
+
+        .brand-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsif untuk Mobile */
+        @media (max-width: 992px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .story-image-wrapper {
+                min-height: 380px;
+                height: 380px;
+            }
+            .brands-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-header {
+                padding: 3rem 0 1.5rem 0;
+            }
+            .story-green-card {
+                padding: 2.2rem 1.5rem;
+                border-radius: 20px;
+            }
+            .story-image-wrapper {
+                min-height: 280px;
+                height: 280px;
+            }
+            .story-image {
+                border-radius: 20px;
+            }
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .brand-card {
+                height: 130px;
+                padding: 1rem;
+            }
+            .brand-card img {
+                max-height: 75px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <!-- Header Component (Kini Kekal Melekat di Atas Skrin Saat Scroll) -->
+        <main-header></main-header>
+
+        <main class="container">
+
+            <!-- Clean Header Section -->
+            <section class="page-header">
+                <h1 class="page-title">About Our <span>Company</span></h1>
+                <p class="page-subtitle">A leading frozen food manufacturer delivering premium quality in Malaysia</p>
+            </section>
+
+            <!-- Story Section -->
+            <section class="story-section">
+                <div class="story-grid">
+                    
+                    <!-- Green Box 'How We Started' -->
+                    <div class="story-green-card">
+                        <h3>How We Started</h3>
+                        <p>Established in 1996, <strong>Melawati Kebab Sdn. Bhd.</strong> began its journey in the frozen food industry, specializing in premium chicken and meat-based products.</p>
+                        <p>Co-founded by <strong>Mr. Mohd Shafiee bin Salim</strong> and <strong>Mrs. Zawiyah binti Basiran</strong>, the enterprise originated as a modest street vendor before expanding into a modern manufacturing facility.</p>
+                        <p>In response to rapidly growing demand, they expanded operations to deliver high-quality, Halal-certified products tailored to customer preferences.</p>
+                        <p>Today, the <strong>Salim</strong> brand stands as one of Malaysia's most recognized and trusted names in the frozen food sector.</p>
+                    </div>
+
+                    <!-- Gambar Founders (Covered, Full Fill, Tanpa Border Tepi) -->
+                    <div class="story-image-wrapper">
+                        <img src="productpic/founders.jpg" alt="Melawati Kebab Founders" class="story-image">
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Our Brands Section (Format Fail JPG) -->
+            <section class="brands-section">
+                <div class="brands-header">
+                    <h2 class="brands-title">Our Brands</h2>
+                    <p class="brands-subtitle">Household frozen food brands under Melawati Kebab Sdn. Bhd.</p>
+                </div>
+                
+                <div class="brands-grid">
+                    <div class="brand-card">
+                        <img src="productpic/SALIM.png" alt="Salim Brand">
+                    </div>
+
+                    <div class="brand-card">
+                        <img src="productpic/mksb.png" alt="Melawati Kebab Brand">
+                    </div>
+
+                    <div class="brand-card">
+                        <img src="productpic/brand3.jpg" alt="Brand 3">
+                    </div>
+
+                    <div class="brand-card">
+                        <img src="productpic/brand5.jpg" alt="Brand 4">
+                    </div>
+
+                    <div class="brand-card">
+                        <img src="productpic/brand4.jpg" alt="Brand 5">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Component -->
+        <main-footer></main-footer>
+
+    </div>
+
+</body>
+</html>
