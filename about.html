@@ -23,12 +23,15 @@
             --salim-red: #ba0c18;
             --salim-red-hover: #960913;
             --salim-green: #008d4c;
-            --bg-light: #f8fafc;
+
+            /* ULTRA-LIGHT CREAM THEME */
+            --bg-light: #fdfbf7;
             --bg-card: #ffffff;
-            --text-dark: #0f172a;
+            --bg-cream-card: #f8f4ed;
+            --text-dark: #1e293b;
             --text-gray: #475569;
-            --border-color: #e2e8f0;
-            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --border-color: #eee7de;
+            --transition: all 0.3s ease;
         }
 
         *, *::before, *::after {
@@ -258,6 +261,54 @@
             transform: scale(1.05);
         }
 
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-inquiry-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-inquiry-fixed i {
+            font-size: 2rem;
+        }
+
+        .whatsapp-inquiry-fixed:hover {
+            transform: scale(1.1);
+            background-color: #1da851;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            color: white;
+        }
+
+        .ws-badge {
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+            background: var(--salim-red);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
         /* Responsive Mobile Adjustments */
         @media (max-width: 992px) {
             .story-grid {
@@ -350,8 +401,8 @@
 
             <section class="brands-section">
                 <div class="brands-header">
-                    <h2 class="brands-title">Our Brands</h2>
-                    <p class="brands-subtitle">Household frozen food brands under Melawati Kebab Sdn. Bhd.</p>
+                    <h2 class="brands-title">Our Group of Brands</h2>
+                    <p class="brands-subtitle">An expanding group of businesses brands under Melawati Kebab Sdn. Bhd.</p>
                 </div>
                 
                 <div class="brands-grid">
@@ -380,6 +431,12 @@
         </main>
 
         <main-footer></main-footer>
+
+        <!-- FLOATING WHATSAPP BUTTON WITH NEED HELP BADGE -->
+        <a href="https://wa.me/60124247708?text=Hi%20Salim%20Melawati%20Kebab,%20saya%20berminat%20untuk%20bertanya%20tentang%20produk." class="whatsapp-inquiry-fixed" target="_blank" rel="noopener noreferrer" aria-label="Need Help? Contact WhatsApp">
+            <span class="ws-badge">Need Help?</span>
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
 
     </div>
 
