@@ -20,7 +20,7 @@
             --salim-red-hover: #960812;
             --salim-green: #008d4c;
             
-            /* SOFT CREAM THEME (SAMA SEBIJIK SEPERTI INDEX & ABOUT US) */
+            /* SOFT CREAM THEME */
             --bg-body: #fdfbf7;
             --card-bg: #ffffff;
             --text-main: #1e293b;
@@ -39,7 +39,7 @@
             width: 100%;
             height: 100%;
             max-width: 100%;
-            overflow-x: clip;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -61,24 +61,14 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: clip;
             position: relative;
         }
 
         main-header {
             display: block;
             width: 100%;
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000;
-        }
-
-        main-header header, 
-        main-header nav, 
-        main-header .navbar, 
-        main-header .header-container {
-            position: sticky !important;
-            top: 0 !important;
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
 
@@ -326,7 +316,7 @@
             color: var(--text-muted);
         }
 
-        /* WHATSAPP FLOATING BUTTON (SEBIJIK SAMA INDEX & ABOUT US) */
+        /* WHATSAPP FLOATING BUTTON */
         .whatsapp-inquiry-fixed {
             position: fixed;
             bottom: 30px;
@@ -435,7 +425,7 @@
 
     </div>
 
-    <!-- BUTANG WHATSAPP TERAPUNG BULAT (SEBIJIK SAMA INDEX & ABOUT US) -->
+    <!-- WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/60124247708?text=Hi%20Salim%20Melawati%20Kebab,%20saya%20berminat%20untuk%20bertanya%20tentang%20produk." class="whatsapp-inquiry-fixed" target="_blank" rel="noopener noreferrer" aria-label="Need Help? Contact WhatsApp">
         <span class="ws-badge">Need Help?</span>
         <i class="fa-brands fa-whatsapp"></i>
