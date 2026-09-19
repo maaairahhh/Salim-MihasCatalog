@@ -259,7 +259,7 @@ main-footer {
 }
 
 .footer-address i {
-    color: var(--salim-red);
+    color: var(--footer-icon-accent); /* Diubah daripada var(--salim-red) kepada warna aksen ikon footer */
     font-size: 1.1rem;
     margin-top: 4px;
     flex-shrink: 0;
