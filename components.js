@@ -10,9 +10,7 @@ class MainHeader extends HTMLElement {
         <header class="site-header">
             <div class="header-container">
                 <a href="index.html" class="logo-group">
-                    <img src="productpic/SALIM.png" alt="Salim Logo" class="logo-img">
-                    <div class="logo-divider"></div>
-                    <img src="productpic/mksb.png" alt="Melawati Kebab Logo" class="logo-img">
+                    <img src="productpic/SALIM.png" alt="Salim Logo" class="logo-img"> 
                 </a>
 
                 <button class="menu-toggle" aria-label="Open Menu">
@@ -43,7 +41,6 @@ class MainHeader extends HTMLElement {
         }
     }
 }
-
 // ==========================================
 // 2. FOOTER COMPONENT (<main-footer></main-footer>)
 // ==========================================
@@ -56,16 +53,15 @@ class MainFooter extends HTMLElement {
                     <div class="footer-brand">
                         <div class="footer-logos">
                             <img src="productpic/SALIM.png" alt="Salim Logo" class="footer-logo-img">
-                            <img src="productpic/mksb.png" alt="Melawati Kebab Logo" class="footer-logo-img">
                         </div>
-                        <div class="company-name">Melawati Kebab Sdn Bhd</div>
-                        <div class="company-ssm">(778900-M)</div>
+                        <div class="company-name" style="line-height: 1; margin-bottom: 0;">Melawati Kebab Sdn Bhd</div>
+                        <div class="company-ssm" style="margin-top: -4px; font-size: 0.85em; opacity: 0.85;">(778900-M)</div>
                     </div>
 
                     <div class="footer-info">
                         <div class="footer-address">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>No 54-1F, Jalan 2/154D, Taman Desa Cheras, 56000 Kuala Lumpur, Malaysia</span>
+                            <span>No 54-1F, Jalan 2/154D, Taman Desa Cheras,<br>56000 Kuala Lumpur, Malaysia</span>
                         </div>
                         <div class="footer-contacts">
                             <a href="tel:+603 9107 9708" class="contact-item"><i class="fa-solid fa-phone"></i> +603 9107 9708</a>
