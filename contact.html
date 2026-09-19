@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Salim Melawati Kebab</title>
+    <meta name="description" content="Get in touch with Salim Melawati Kebab. Contact us for general inquiries, wholesale orders, dealer partnerships, or event catering.">
 
     <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
     
     <!-- CSS Header & Footer Komponen -->
@@ -21,15 +24,21 @@
             --salim-red-hover: #960812;
             --salim-green: #008d4c;
             --salim-green-hover: #006e3b;
-            --bg-light: #f8fafc;
+            --salim-gold: #c59b27;
+            --ws-green: #25d366;
+            --ws-green-hover: #1da851;
+            
+            /* ULTRA-LIGHT CREAM THEME */
+            --bg-light: #fdfbf7;
             --bg-card: #ffffff;
-            --text-dark: #0f172a;
+            --bg-cream-card: #f8f4ed;
+            --text-dark: #1e293b;
             --text-gray: #475569;
-            --border-color: #e2e8f0;
+            --border-color: #eee7de;
             --transition: all 0.3s ease;
         }
 
-        /* RESET KETAT - Diganti supaya font-family universal tidak merosakkan FontAwesome icons */
+        /* RESET & BASE STYLES */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -43,6 +52,7 @@
 
         html, body {
             width: 100%;
+            height: 100%;
             max-width: 100%;
             overflow-x: clip; 
             position: relative;
@@ -55,15 +65,18 @@
             line-height: 1.6;
         }
 
-        /* WRAPPER KUNCI ULTIMATE */
+        /* FLEXBOX STICKY FOOTER WRAPPER */
         .site-wrapper {
             width: 100%;
             max-width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: clip;
             position: relative;
+            background-color: var(--bg-light);
         }
 
-        /* Kawalan Custom Tag & Imej */
         main-header, main-footer, img, iframe, section, div {
             max-width: 100%;
         }
@@ -73,13 +86,17 @@
             width: 100%;
         }
 
+        main.container {
+            flex: 1;
+        }
+
         .container {
             width: 92%;
             max-width: 1250px;
             margin: 0 auto;
         }
 
-        /* Contact Header Title */
+        /* Page Header Title */
         .page-header {
             text-align: center;
             padding: 3rem 0 1.5rem 0;
@@ -201,7 +218,7 @@
             border-radius: 20px;
             padding: 3rem 2.5rem;
             margin: 3.5rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .form-header {
@@ -238,7 +255,14 @@
             margin-bottom: 1.5rem;
         }
 
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
         .form-group input, 
+        .form-group select, 
         .form-group textarea {
             width: 100%;
             padding: 0.9rem 1.2rem;
@@ -249,9 +273,21 @@
             color: var(--text-dark);
             outline: none;
             transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%3C475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
         }
 
         .form-group input:focus, 
+        .form-group select:focus, 
         .form-group textarea:focus {
             border-color: var(--salim-red);
             background: #ffffff;
@@ -289,7 +325,7 @@
             box-shadow: 0 6px 20px rgba(186, 12, 24, 0.4);
         }
 
-        /* Dealer Banner / Action Card Style */
+        /* Dealer Banner Card */
         .dealer-banner {
             margin: 3.5rem 0 5rem 0;
         }
@@ -342,6 +378,54 @@
             color: #ffffff;
         }
 
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-inquiry-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-inquiry-fixed i {
+            font-size: 2rem;
+        }
+
+        .whatsapp-inquiry-fixed:hover {
+            transform: scale(1.1);
+            background-color: #1da851;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            color: white;
+        }
+
+        .ws-badge {
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+            background: var(--salim-red);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .contact-info-grid {
@@ -377,12 +461,21 @@
                 width: 100%;
                 justify-content: center;
             }
+            .floating-ws-btn span {
+                display: none;
+            }
+            .floating-ws-btn {
+                padding: 12px;
+                border-radius: 50%;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Wrapper Penutup Semua Elemen -->
+    <!-- Site Wrapper for Sticky Footer -->
     <div class="site-wrapper">
 
         <!-- Header Navigation Component -->
@@ -392,7 +485,7 @@
 
             <!-- Page Header -->
             <section class="page-header">
-                <h1 class="page-title">Contact</h1>
+                <h1 class="page-title">Contact Us</h1>
                 <p class="page-subtitle">Have questions? We'd love to hear from you.</p>
             </section>
 
@@ -423,7 +516,7 @@
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <h3>Phone</h3>
-                    <p><a href="tel:0391018951">03 9107 9708</a></p>
+                    <p><a href="tel:0391079708">+603-9107-9708</a></p>
                 </div>
 
             </section>
@@ -446,10 +539,15 @@
                     <h2>Get In Touch With Us</h2>
                 </div>
 
-                <form class="contact-form" action="#" method="POST">
+                <!-- DIBAIKI: Mengirim terus ke melawatikebab1996@gmail.com -->
+                <form class="contact-form" action="https://formsubmit.co/melawatikebab1996@gmail.com" method="POST">
+                    
+                    <!-- Subjek emel apabila diterimakan kelak -->
+                    <input type="hidden" name="_subject" value="Mesej Baru dari Website Salim Melawati Kebab">
+                    
                     <div class="form-grid">
                         <div class="form-group">
-                            <input type="text" name="first_name" placeholder="Name" required>
+                            <input type="text" name="first_name" placeholder="First Name" required>
                         </div>
                         <div class="form-group">
                             <input type="text" name="last_name" placeholder="Last Name" required>
@@ -462,8 +560,22 @@
                         </div>
                     </div>
 
+                    <!-- Dropdown Inquiry Type -->
                     <div class="form-group full-width">
-                        <textarea name="message" placeholder="Message" required></textarea>
+                        <label for="inquiry_type">Inquiry Type / Jenis Pertanyaan</label>
+                        <select name="inquiry_type" id="inquiry_type" required>
+                            <option value="" disabled selected>-- Select Inquiry Type / Pilih Jenis Pertanyaan --</option>
+                            <option value="general">General Inquiry / Pertanyaan Umum</option>
+                            <option value="wholesale">Bulk Purchase & Wholesale / Pembelian Pukal</option>
+                            <option value="dealer">Distributor & Dealer / Pengedar & Rakan Niaga</option>
+                            <option value="catering">Event & Catering / Tempahan Katering</option>
+                            <option value="feedback">Feedback & Suggestions / Maklum Balas</option>
+                            <option value="other">Other Inquiry / Lain-lain</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <textarea name="message" placeholder="Message / Mesej anda" required></textarea>
                     </div>
 
                     <div class="btn-submit-container">
@@ -476,8 +588,8 @@
             <section class="dealer-banner">
                 <a href="distributor.html" class="dealer-card">
                     <div>
-                        <h3>Contact Our Official Dealer</h3>
-                        <p>Looking to buy in bulk or become a partner? Connect with our authorized distributors.</p>
+                        <h3>Contact Our Official Sales Team</h3>
+                        <p>Looking to buy in bulk or become a partner? Connect with our authorized team.</p>
                     </div>
                     <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                 </a>
@@ -489,6 +601,12 @@
         <main-footer></main-footer>
 
     </div>
+
+    <!-- FLOATING WHATSAPP BUTTON WITH NEED HELP BADGE -->
+    <a href="https://wa.me/60124247708?text=Hi%20Salim%20Melawati%20Kebab,%20saya%20berminat%20untuk%20bertanya%20tentang%20produk." class="whatsapp-inquiry-fixed" target="_blank" rel="noopener noreferrer" aria-label="Need Help? Contact WhatsApp">
+        <span class="ws-badge">Need Help?</span>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
