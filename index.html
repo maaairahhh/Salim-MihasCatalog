@@ -186,36 +186,148 @@
             font-size: 1.2rem;
         }
 
-        .mihas-photos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .mihas-photo-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-            height: 260px;
-            background-color: #ffffff; /* Ditukar ke putih supaya kemas dengan contain */
-            border: 1px solid var(--border-color);
-            position: relative;
+        /* RE-DESIGNED MIHAS DISPLAY CONTAINER */
+        .mihas-display-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .mihas-photo-card img {
+        /* 1. POSTER MIHAS (TANPA KOTAK PUTIH DI BELAKANG) */
+        .mihas-poster-card {
+            position: relative;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            overflow: hidden;
+            text-align: center;
+            padding: 0;
+        }
+
+        .mihas-poster-card img {
             width: 100%;
-            height: 100%;
-            object-fit: contain; /* Memastikan gambar nampak penuh tanpa terpotong di telefon */
-            padding: 5px;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 16px;
+            display: block;
+            margin: 0 auto;
             transition: transform 0.4s ease;
         }
 
-        .mihas-photo-card:hover img {
-            transform: scale(1.03);
+        .mihas-poster-card:hover img {
+            transform: scale(1.01);
+        }
+
+        /* 2. HIGHLIGHTS SLIDESHOW (GAMBAR SAMA SIZE & ARROW KIRI KANAN) */
+        .mihas-highlights-box {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        .mihas-slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            border-radius: 14px;
+            overflow: hidden;
+            background-color: var(--bg-cream-card);
+        }
+
+        .mihas-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: scale(1.02);
+        }
+
+        .mihas-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .mihas-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* BUTANG ARROW NAVIGASI SLIDESHOW */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 15;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .slider-arrow:hover {
+            background: var(--salim-red);
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-arrow {
+            left: 15px;
+        }
+
+        .next-arrow {
+            right: 15px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+            max-width: 90%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .slider-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slider-dots .dot.active {
+            background-color: var(--salim-red);
+            width: 22px;
+            border-radius: 10px;
         }
 
         /* 2. HERO SECTION */
@@ -306,7 +418,7 @@
             height: auto;
             max-height: 420px;
             display: block;
-            object-fit: contain; /* Memastikan gambar produk nampak penuh tanpa terpotong */
+            object-fit: contain;
             background-color: #ffffff;
         }
 
@@ -524,13 +636,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .mihas-photos-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .mihas-photo-card {
-                height: 250px;
-            }
             .why-us-grid {
                 grid-template-columns: 1fr;
             }
@@ -542,6 +647,13 @@
             }
             .mihas-divider {
                 height: 35px;
+            }
+
+            .mihas-slider-wrapper {
+                height: 300px;
+            }
+            .mihas-poster-card img {
+                max-height: 380px;
             }
 
             .hero {
@@ -601,6 +713,9 @@
             .mihas-official-logo {
                 height: 45px;
             }
+            .mihas-slider-wrapper {
+                height: 230px;
+            }
             .hero-text h1 {
                 font-size: 1.8rem;
             }
@@ -612,6 +727,11 @@
                 width: 100%;
                 max-width: 100%;
                 justify-content: center;
+            }
+            .slider-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -650,16 +770,54 @@
                     </div>
                 </div>
 
-                <div class="mihas-photos-grid">
-                    <div class="mihas-photo-card">
-                        <img src="productpic/mihas-lastyear-1.png" alt="MIHAS Highlights 1" loading="lazy">
+                <!-- SHOWCASE DISPLAY AREA -->
+                <div class="mihas-display-container">
+                    
+                    <!-- POSTER MIHAS (TANPA KOTAK PUTIH DI BELAKANG) -->
+                    <div class="mihas-poster-card">
+                        <img src="productpic/mihas-poster.png" alt="MIHAS Poster" loading="lazy" onerror="this.src='productpic/mihas-lastyear-1.png'">
                     </div>
-                    <div class="mihas-photo-card">
-                        <img src="productpic/mihas-lastyear-2.png" alt="MIHAS Highlights 2" loading="lazy">
+
+                    <!-- SLIDESHOW 10 GAMBAR TERKINI (BERTUKAR 2 SAAT + ARROW KIRI KANAN) -->
+                    <div class="mihas-highlights-box">
+                        <div class="mihas-slider-wrapper" id="mihasSlider">
+                            
+                            <!-- BUTANG ARROW NAVIGASI -->
+                            <button class="slider-arrow prev-arrow" onclick="changeSlide(-1)" aria-label="Previous Slide">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-arrow next-arrow" onclick="changeSlide(1)" aria-label="Next Slide">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <!-- 10 GAMBAR MIHAS -->
+                            <div class="mihas-slide active"><img src="productpic/mihas-terkini-1.jpg" alt="MIHAS 1" onerror="this.src='productpic/mihas-lastyear-1.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-2.jpg" alt="MIHAS 2" onerror="this.src='productpic/mihas-lastyear-2.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-3.jpg" alt="MIHAS 3" onerror="this.src='productpic/mihas-lastyear-3.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-4.jpg" alt="MIHAS 4" onerror="this.src='productpic/mihas-lastyear-1.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-5.jpg" alt="MIHAS 5" onerror="this.src='productpic/mihas-lastyear-2.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-6.jpg" alt="MIHAS 6" onerror="this.src='productpic/mihas-lastyear-3.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-7.jpg" alt="MIHAS 7" onerror="this.src='productpic/mihas-lastyear-1.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-8.jpg" alt="MIHAS 8" onerror="this.src='productpic/mihas-lastyear-2.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-9.jpg" alt="MIHAS 9" onerror="this.src='productpic/mihas-lastyear-3.png'"></div>
+                            <div class="mihas-slide"><img src="productpic/mihas-terkini-10.jpg" alt="MIHAS 10" onerror="this.src='productpic/mihas-lastyear-1.png'"></div>
+
+                            <!-- Indikator Dots (10 Biji Dot) -->
+                            <div class="slider-dots">
+                                <span class="dot active" onclick="currentSlide(0)"></span>
+                                <span class="dot" onclick="currentSlide(1)"></span>
+                                <span class="dot" onclick="currentSlide(2)"></span>
+                                <span class="dot" onclick="currentSlide(3)"></span>
+                                <span class="dot" onclick="currentSlide(4)"></span>
+                                <span class="dot" onclick="currentSlide(5)"></span>
+                                <span class="dot" onclick="currentSlide(6)"></span>
+                                <span class="dot" onclick="currentSlide(7)"></span>
+                                <span class="dot" onclick="currentSlide(8)"></span>
+                                <span class="dot" onclick="currentSlide(9)"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mihas-photo-card">
-                        <img src="productpic/mihas-lastyear-3.png" alt="MIHAS Highlights 3" loading="lazy">
-                    </div>
+
                 </div>
             </section>
 
@@ -768,6 +926,61 @@
         <span class="ws-badge">Need Help?</span>
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- SCRIPT AUTO-SLIDER 10 GAMBAR (BERTUKAR SETIAP 2 SAAT + ARROW NAVIGASI) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let slides = document.querySelectorAll(".mihas-slide");
+            let dots = document.querySelectorAll(".slider-dots .dot");
+            let currentIndex = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove("active");
+                    if (dots[i]) dots[i].classList.remove("active");
+                });
+                currentIndex = index;
+                if (currentIndex >= slides.length) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = slides.length - 1;
+
+                slides[currentIndex].classList.add("active");
+                if (dots[currentIndex]) dots[currentIndex].classList.add("active");
+            }
+
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            function startSlider() {
+                slideInterval = setInterval(nextSlide, 2000); // Bertukar setiap 2000ms (2 saat)
+            }
+
+            function stopSlider() {
+                clearInterval(slideInterval);
+            }
+
+            window.currentSlide = function(n) {
+                stopSlider();
+                showSlide(n);
+                startSlider();
+            };
+
+            window.changeSlide = function(step) {
+                stopSlider();
+                showSlide(currentIndex + step);
+                startSlider();
+            };
+
+            const sliderWrapper = document.getElementById("mihasSlider");
+            if (sliderWrapper) {
+                sliderWrapper.addEventListener("mouseenter", stopSlider);
+                sliderWrapper.addEventListener("mouseleave", startSlider);
+            }
+
+            startSlider();
+        });
+    </script>
 
 </body>
 </html>
